@@ -13,14 +13,32 @@ body {
 }
 
 main {
-  margin: 10rem 8rem 0rem;
+  margin: 0rem 8rem;
 }
+
+.hero {
+  margin-top: 10rem;
+}
+
+/* --------------- TEXT ----------------- */
+
 .green-text {
   color: var(--light-green);
 }
 
 p {
   width: 55ch;
+  font-size: 0.875rem;
+
+}
+
+.hero-text {
+  font-size: 1rem;
+}
+
+.page-intro {
+  margin-top: 1rem;
+  margin-bottom: 4rem;
 }
 
 h1 {
@@ -31,12 +49,31 @@ h2 {
   font-size: 1.5rem;
 }
 
+h3 {
+  font-size: 2rem;
+  margin-top: 2.625rem;
+  margin-bottom: 0rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+  margin-bottom: 0rem;
+}
+
 #wave {
   filter: drop-shadow(0rem -0.75rem 1.56rem rgba(183, 155, 123, 0.09));
   overflow: hidden;
   margin-top: -29rem;
   position: absolute;
   z-index: -1;
+}
+
+/* .icon {
+  width: 80%;
+} */
+
+.icon:hover {
+  fill: var(--black);
 }
 
 /* --------------- BUTTONS ----------------- */
@@ -75,6 +112,60 @@ h2 {
   background-color: rgba(67, 163, 59, 0.2);
 }
 
+.text-back{
+  color: var(--dark-green);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.text-back:hover{
+  color: var(--black);
+}
+
+.btn-back {
+  margin-top: 2rem;
+}
+
+/* --------------- RADIO-BUTTONS ----------------- */
+
+.radio-group input[type="radio"] {
+  display: none;
+}
+
+.radio-group {
+  margin-top: 2.625rem;
+}
+
+.btn-choices {
+  background-color: var(--background-color);
+  color: var(--dark-green);
+  border: none;
+  border-radius: 0.625rem;
+  box-shadow: inset 0 0 0 0.125rem var(--dark-green);
+  padding: 0.8125rem 1.3125rem;
+  margin-right: 2.625rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-choices:hover{
+  background-color: rgba(67, 163, 59, 0.2);
+}
+
+input[type="radio"]:checked + .btn-choices{
+  background-color: var(--dark-green);
+  color: var(--white);
+}
+
+/* .btn-choices:focus{
+  background-color: var(--dark-green);
+  color: var(--white);
+  
+} */
 /* --------------- NAVBAR ----------------- */
 .navbar {
   box-shadow: 0rem 1.25rem 1.69rem 0rem rgba(183, 155, 123, 0.07);
