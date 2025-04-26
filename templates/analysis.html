@@ -32,6 +32,7 @@
         <p class="page-intro poppins-regular">In this stage, you’ll select how you want to use eCOmpass. Start by choosing the approach that best fits your current planning needs.</p>
         <h4 class="poppins-bold"> Geographical area of interest</h4>
         <p class="poppins-regular">You may choose to do the location analysis at the national, regional or municipal levels. Analysis is only available in Sweden. </p> 
+
         <div class="contaioner-small">
             <form method="post" action="/"> 
                 <div class="radio-group">
@@ -44,19 +45,17 @@
                     <input type="radio" id="btn-choice3" name="btn-choices" value="Municipal">
                     <label for="btn-choice3" class="btn-choices poppins-semibold">Municipal</label>
                 </div>
-                <div class="regional">
-                    
+                <div class="regions">
                     <p>Choose region</p>
-                    <input type="text" id="region" name="region" required>
-                    
+                    <input type="text" id="region" name="region" required autocomplete="off">
+
+                    <div id="region-error" class="error-message"></div>
                 </div>
                 <div class="cities">
-                    
                     <p>Choose Municipality</p>
-                    <input type="text" id="cities" name="cities" required>
-                    
+                    <input type="text" id="cities" name="cities" required autocomplete="off">
+                    <div id="city-error" class="error-message"></div>
                 </div>
-            
                 
             </form> 
         </div>

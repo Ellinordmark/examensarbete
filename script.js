@@ -1,35 +1,97 @@
-// function selected(element) {
-//     element.classList.toggle("pressed"); 
-// }
+// ----------------------- DROPDOWN FOR REGIONS ---------------------------
+document.addEventListener("DOMContentLoaded", function () {
+    const regions = [
+        "Dalarna",
+        "Norrbotten", 
+        "Västerbotten",
+        "Västra Götaland",
+        "Halland", 
+        "Värmland",
+        "Örebro",
+        "Kronoberg",
+        "Skåne",
+        "Jönköping",
+        "Östergötland",
+        "Södermanland",
+        "Kalmar",
+        "Uppsala",
+        "Västernorrland",
+        "Gotland",
+        "Jämtland",
+        "Gävleborg",
+        "Blekinge",
+        "Västmanland",
+        "Stockholm"
+    ];
 
+    const input_regions = document.getElementById("region");
+    const list_regions = document.createElement("div");
+    list_regions.setAttribute("id", "autocomplete-list1");
+    list_regions.setAttribute("class", "autocomplete-items");
+    input_regions.parentNode.appendChild(list_regions);
 
-// const btnChoice1 = document.getElementById("btn-choice1"); 
+    let activeIndex = -1; // <-- Track which item is selected
 
-// btnChoice1.addEventListener("click", () => {
-//     console.log('hello');
-//     btnChoice1.insertAdjacentHTML("afterend", `<p>Hej</p>`);
-// });
+    input_regions.addEventListener("input", function () {
+        const value = this.value.toLowerCase();
+        list_regions.innerHTML = "";
+        activeIndex = -1; // reset active index
 
-// const btnChoice2 = document.getElementById("btn-choice2"); 
+        if (!value) return;
 
-// btnChoice2.addEventListener("click", () => {
-//     console.log('hello2');
-//     btnChoice2.style.background="#2A6026";
-//     btnChoice2.style.color="#FFFFFF";
-// });
+        const matches_regions = regions.filter(city => city.toLowerCase().startsWith(value));
+        matches_regions.forEach(match => {
+            const item_regions = document.createElement("div");
+            item_regions.innerText = match;
+            item_regions.addEventListener("click", function () {
+                input_regions.value = match;
+                list_regions.innerHTML = "";
+            });
+            list_regions.appendChild(item_regions);
+        });
+    });
 
-// const btnChoice3 = document.getElementById("btn-choice3"); 
+    input_regions.addEventListener("keydown", function (e) {
+        const items = list_regions.getElementsByTagName("div");
+        if (e.key === "ArrowDown") {
+            activeIndex++;
+            highlightActive(items);
+            e.preventDefault();
+        } else if (e.key === "ArrowUp") {
+            activeIndex--;
+            highlightActive(items);
+            e.preventDefault();
+        } else if (e.key === "Enter") {
+            e.preventDefault();
+            if (activeIndex > -1 && items[activeIndex]) {
+                items[activeIndex].click();
+            }
+        }
+    });
 
-// btnChoice3.addEventListener("click", () => {
-//     console.log('hello3');
-//     btnChoice3.style.background="#2A6026";
-//     btnChoice3.style.color="#FFFFFF";
-// });
+    function highlightActive(items) {
+        if (!items) return;
+        // Remove all previous active classes
+        for (let i = 0; i < items.length; i++) {
+            items[i].classList.remove("autocomplete-active");
+        }
+        if (activeIndex >= items.length) activeIndex = 0;
+        if (activeIndex < 0) activeIndex = items.length - 1;
+        items[activeIndex].classList.add("autocomplete-active");
+    }
 
+    document.addEventListener("click", function (e) {
+        if (e.target !== input_regions) {
+            list_regions.innerHTML = "";
+        }
+    });
 
-// --------------- CITIES -------------------
+    
+});
 
-document.ready(function() {
+// ----------------------- DROPDOWN FOR CITIES ---------------------------
+
+document.addEventListener("DOMContentLoaded", function () {
     const cities = [
         "Örebro",
         "Kungsbacka",
@@ -323,7 +385,67 @@ document.ready(function() {
         "Arjeplog"
     ];
 
-    document.getElementById("cities").autocomplete({
-        source: cities
+    const input_cities = document.getElementById("cities");
+    const list_cities = document.createElement("div");
+    list_cities.setAttribute("id", "autocomplete-list2");
+    list_cities.setAttribute("class", "autocomplete-items");
+    input_cities.parentNode.appendChild(list_cities);
+
+    let activeIndex = -1; // <-- Track which item is selected
+
+    input_cities.addEventListener("input", function () {
+        const value = this.value.toLowerCase();
+        list_cities.innerHTML = "";
+        activeIndex = -1; // reset active index
+
+        if (!value) return;
+
+        const matches_cities = cities.filter(city => city.toLowerCase().startsWith(value));
+        matches_cities.forEach(match => {
+            const item_cities = document.createElement("div");
+            item_cities.innerText = match;
+            item_cities.addEventListener("click", function () {
+                input_cities.value = match;
+                list_cities.innerHTML = "";
+            });
+            list_cities.appendChild(item_cities);
+        });
+    });
+
+    input_cities.addEventListener("keydown", function (e) {
+        const items = list_cities.getElementsByTagName("div");
+        if (e.key === "ArrowDown") {
+            activeIndex++;
+            highlightActive(items);
+            e.preventDefault();
+        } else if (e.key === "ArrowUp") {
+            activeIndex--;
+            highlightActive(items);
+            e.preventDefault();
+        } else if (e.key === "Enter") {
+            e.preventDefault();
+            if (activeIndex > -1 && items[activeIndex]) {
+                items[activeIndex].click();
+            }
+        }
+    });
+
+    function highlightActive(items) {
+        if (!items) return;
+        // Remove all previous active classes
+        for (let i = 0; i < items.length; i++) {
+            items[i].classList.remove("autocomplete-active");
+        }
+        if (activeIndex >= items.length) activeIndex = 0;
+        if (activeIndex < 0) activeIndex = items.length - 1;
+        items[activeIndex].classList.add("autocomplete-active");
+    }
+
+    document.addEventListener("click", function (e) {
+        if (e.target !== input_cities) {
+            list_cities.innerHTML = "";
+        }
     });
 });
+
+
