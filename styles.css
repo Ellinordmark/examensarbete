@@ -186,12 +186,6 @@ input[type="radio"]:checked + .btn-choices{
   color: #000; /* Black text */
 }
 
-.error-message {
-  color: red;
-  font-size: 0.875rem; /* slightly smaller text */
-  margin-top: 0.25rem;
-  display: none; /* hidden by default */
-}
 
 /* --------------- NAVBAR ----------------- */
 .navbar {

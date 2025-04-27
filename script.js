@@ -1,78 +1,4 @@
-// ----------------------- DROPDOWN FOR REGIONS & CITIES ---------------------------
-// document.addEventListener("DOMContentLoaded", function () {
-    
-
-//     const inputRegions = document.getElementById("region");
-//     const inputCities = document.getElementById("cities");
-
-//     setupAutocomplete(inputRegions, regions);
-//     setupAutocomplete(inputCities, cities);
-// });
-
-
-
-// // autocomplete function
-// function setupAutocomplete(inputElement, optionsArray) {
-//     const listElement = document.createElement("div");
-//     listElement.setAttribute("class", "autocomplete-items");
-//     inputElement.parentNode.appendChild(listElement);
-
-//     let activeIndex = -1;
-
-//     inputElement.addEventListener("input", function () {
-//         const value = this.value.toLowerCase();
-//         listElement.innerHTML = "";
-//         activeIndex = -1;
-
-//         if (!value) return;
-
-//         const matches = optionsArray.filter(option => option.toLowerCase().startsWith(value));
-//         matches.forEach(match => {
-//             const item = document.createElement("div");
-//             item.innerText = match;
-//             item.addEventListener("click", function () {
-//                 inputElement.value = match;
-//                 listElement.innerHTML = "";
-//             });
-//             listElement.appendChild(item);
-//         });
-//     });
-
-//     inputElement.addEventListener("keydown", function (e) {
-//         const items = listElement.getElementsByTagName("div");
-//         if (e.key === "ArrowDown") {
-//             activeIndex++;
-//             highlightActive(items);
-//             e.preventDefault();
-//         } else if (e.key === "ArrowUp") {
-//             activeIndex--;
-//             highlightActive(items);
-//             e.preventDefault();
-//         } else if (e.key === "Enter") {
-//             e.preventDefault();
-//             if (activeIndex > -1 && items[activeIndex]) {
-//                 items[activeIndex].click();
-//             }
-//         }
-//     });
-
-//     function highlightActive(items) {
-//         if (!items.length) return;
-//         for (let i = 0; i < items.length; i++) {
-//             items[i].classList.remove("autocomplete-active");
-//         }
-//         if (activeIndex >= items.length) activeIndex = 0;
-//         if (activeIndex < 0) activeIndex = items.length - 1;
-//         items[activeIndex].classList.add("autocomplete-active");
-//     }
-
-//     document.addEventListener("click", function (e) {
-//         if (e.target !== inputElement) {
-//             listElement.innerHTML = "";
-//         }
-//     });
-// }
-
+// ------------------------ REGIONS & CITIES DROPDOWN ---------------------------------
 document.addEventListener("DOMContentLoaded", function () {
     const regions = [
         "Dalarna",
@@ -388,98 +314,79 @@ document.addEventListener("DOMContentLoaded", function () {
         "Grästorp",
         "Sundbyberg",
         "Arjeplog"
-        ];
+    ];
 
-    const inputRegions = document.getElementById("region");
-    const inputCities = document.getElementById("cities");
-
-    const regionsDiv = document.querySelector(".regions");
-    const citiesDiv = document.querySelector(".cities");
+    const inputs = {
+        Regional: document.querySelector(".regions"),
+        Municipal: document.querySelector(".cities")
+    };
     const radioButtons = document.querySelectorAll('input[name="btn-choices"]');
 
-    // Hide inputs initially
-    regionsDiv.style.display = "none";
-    citiesDiv.style.display = "none";
+    // Hide both input fields at start
+    Object.values(inputs).forEach(div => div.style.display = "none");
 
-    // Setup global autocomplete
-    setupAutocomplete(inputRegions, regions);
-    setupAutocomplete(inputCities, cities);
+    // Setup autocomplete for both inputs
+    setupAutocomplete(document.getElementById("region"), regions);
+    setupAutocomplete(document.getElementById("cities"), cities);
 
-    // Listen for radio button changes
+    // Listen to radio button changes <-------------------------- SHOW / HIDE INPUTS
     radioButtons.forEach(radio => {
         radio.addEventListener("change", function () {
-            if (this.value === "National") {
-                regionsDiv.style.display = "none";
-                citiesDiv.style.display = "none";
-            } else if (this.value === "Regional") {
-                regionsDiv.style.display = "block";
-                citiesDiv.style.display = "none";
-            } else if (this.value === "Municipal") {
-                regionsDiv.style.display = "none";
-                citiesDiv.style.display = "block";
+            // Hide all inputs first
+            Object.values(inputs).forEach(div => div.style.display = "none");
+            // Show the corresponding input if it exists
+            if (inputs[this.value]) {
+                inputs[this.value].style.display = "block";
             }
         });
     });
 });
 
-// Global autocomplete function
-function setupAutocomplete(inputElement, optionsArray) {
-    const listElement = document.createElement("div");
-    listElement.setAttribute("class", "autocomplete-items");
-    inputElement.parentNode.appendChild(listElement);
+// Function to setup autocomplete behavior
+function setupAutocomplete(input, options) {
+    const list = document.createElement("div");
+    list.className = "autocomplete-items";
+    input.parentNode.appendChild(list);
 
     let activeIndex = -1;
 
-    inputElement.addEventListener("input", function () {
+    input.addEventListener("input", function () {
         const value = this.value.toLowerCase();
-        listElement.innerHTML = "";
+        list.innerHTML = "";
         activeIndex = -1;
-
         if (!value) return;
 
-        const matches = optionsArray.filter(option => option.toLowerCase().startsWith(value));
-        matches.forEach(match => {
+        options.filter(opt => opt.toLowerCase().startsWith(value)).forEach(match => {
             const item = document.createElement("div");
             item.innerText = match;
-            item.addEventListener("click", function () {
-                inputElement.value = match;
-                listElement.innerHTML = "";
+            item.addEventListener("click", () => {
+                input.value = match;
+                list.innerHTML = "";
             });
-            listElement.appendChild(item);
+            list.appendChild(item);
         });
     });
 
-    inputElement.addEventListener("keydown", function (e) {
-        const items = listElement.getElementsByTagName("div");
-        if (e.key === "ArrowDown") {
-            activeIndex++;
-            highlightActive(items);
+    input.addEventListener("keydown", function (e) {
+        const items = list.querySelectorAll("div");
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+            activeIndex = (e.key === "ArrowDown") ? activeIndex + 1 : activeIndex - 1;
+            highlight(items);
             e.preventDefault();
-        } else if (e.key === "ArrowUp") {
-            activeIndex--;
-            highlightActive(items);
+        } else if (e.key === "Enter" && activeIndex > -1) {
             e.preventDefault();
-        } else if (e.key === "Enter") {
-            e.preventDefault();
-            if (activeIndex > -1 && items[activeIndex]) {
-                items[activeIndex].click();
-            }
+            items[activeIndex]?.click();
         }
     });
 
-    function highlightActive(items) {
+    function highlight(items) {
         if (!items.length) return;
-        for (let i = 0; i < items.length; i++) {
-            items[i].classList.remove("autocomplete-active");
-        }
-        if (activeIndex >= items.length) activeIndex = 0;
-        if (activeIndex < 0) activeIndex = items.length - 1;
+        items.forEach(item => item.classList.remove("autocomplete-active"));
+        activeIndex = (activeIndex + items.length) % items.length;
         items[activeIndex].classList.add("autocomplete-active");
     }
 
-    document.addEventListener("click", function (e) {
-        if (e.target !== inputElement) {
-            listElement.innerHTML = "";
-        }
+    document.addEventListener("click", (e) => {
+        if (e.target !== input) list.innerHTML = "";
     });
 }
