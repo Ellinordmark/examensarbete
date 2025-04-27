@@ -1,4 +1,78 @@
-// ----------------------- DROPDOWN FOR REGIONS ---------------------------
+// ----------------------- DROPDOWN FOR REGIONS & CITIES ---------------------------
+// document.addEventListener("DOMContentLoaded", function () {
+    
+
+//     const inputRegions = document.getElementById("region");
+//     const inputCities = document.getElementById("cities");
+
+//     setupAutocomplete(inputRegions, regions);
+//     setupAutocomplete(inputCities, cities);
+// });
+
+
+
+// // autocomplete function
+// function setupAutocomplete(inputElement, optionsArray) {
+//     const listElement = document.createElement("div");
+//     listElement.setAttribute("class", "autocomplete-items");
+//     inputElement.parentNode.appendChild(listElement);
+
+//     let activeIndex = -1;
+
+//     inputElement.addEventListener("input", function () {
+//         const value = this.value.toLowerCase();
+//         listElement.innerHTML = "";
+//         activeIndex = -1;
+
+//         if (!value) return;
+
+//         const matches = optionsArray.filter(option => option.toLowerCase().startsWith(value));
+//         matches.forEach(match => {
+//             const item = document.createElement("div");
+//             item.innerText = match;
+//             item.addEventListener("click", function () {
+//                 inputElement.value = match;
+//                 listElement.innerHTML = "";
+//             });
+//             listElement.appendChild(item);
+//         });
+//     });
+
+//     inputElement.addEventListener("keydown", function (e) {
+//         const items = listElement.getElementsByTagName("div");
+//         if (e.key === "ArrowDown") {
+//             activeIndex++;
+//             highlightActive(items);
+//             e.preventDefault();
+//         } else if (e.key === "ArrowUp") {
+//             activeIndex--;
+//             highlightActive(items);
+//             e.preventDefault();
+//         } else if (e.key === "Enter") {
+//             e.preventDefault();
+//             if (activeIndex > -1 && items[activeIndex]) {
+//                 items[activeIndex].click();
+//             }
+//         }
+//     });
+
+//     function highlightActive(items) {
+//         if (!items.length) return;
+//         for (let i = 0; i < items.length; i++) {
+//             items[i].classList.remove("autocomplete-active");
+//         }
+//         if (activeIndex >= items.length) activeIndex = 0;
+//         if (activeIndex < 0) activeIndex = items.length - 1;
+//         items[activeIndex].classList.add("autocomplete-active");
+//     }
+
+//     document.addEventListener("click", function (e) {
+//         if (e.target !== inputElement) {
+//             listElement.innerHTML = "";
+//         }
+//     });
+// }
+
 document.addEventListener("DOMContentLoaded", function () {
     const regions = [
         "Dalarna",
@@ -23,75 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "Västmanland",
         "Stockholm"
     ];
-
-    const input_regions = document.getElementById("region");
-    const list_regions = document.createElement("div");
-    list_regions.setAttribute("id", "autocomplete-list1");
-    list_regions.setAttribute("class", "autocomplete-items");
-    input_regions.parentNode.appendChild(list_regions);
-
-    let activeIndex = -1; // <-- Track which item is selected
-
-    input_regions.addEventListener("input", function () {
-        const value = this.value.toLowerCase();
-        list_regions.innerHTML = "";
-        activeIndex = -1; // reset active index
-
-        if (!value) return;
-
-        const matches_regions = regions.filter(city => city.toLowerCase().startsWith(value));
-        matches_regions.forEach(match => {
-            const item_regions = document.createElement("div");
-            item_regions.innerText = match;
-            item_regions.addEventListener("click", function () {
-                input_regions.value = match;
-                list_regions.innerHTML = "";
-            });
-            list_regions.appendChild(item_regions);
-        });
-    });
-
-    input_regions.addEventListener("keydown", function (e) {
-        const items = list_regions.getElementsByTagName("div");
-        if (e.key === "ArrowDown") {
-            activeIndex++;
-            highlightActive(items);
-            e.preventDefault();
-        } else if (e.key === "ArrowUp") {
-            activeIndex--;
-            highlightActive(items);
-            e.preventDefault();
-        } else if (e.key === "Enter") {
-            e.preventDefault();
-            if (activeIndex > -1 && items[activeIndex]) {
-                items[activeIndex].click();
-            }
-        }
-    });
-
-    function highlightActive(items) {
-        if (!items) return;
-        // Remove all previous active classes
-        for (let i = 0; i < items.length; i++) {
-            items[i].classList.remove("autocomplete-active");
-        }
-        if (activeIndex >= items.length) activeIndex = 0;
-        if (activeIndex < 0) activeIndex = items.length - 1;
-        items[activeIndex].classList.add("autocomplete-active");
-    }
-
-    document.addEventListener("click", function (e) {
-        if (e.target !== input_regions) {
-            list_regions.innerHTML = "";
-        }
-    });
-
-    
-});
-
-// ----------------------- DROPDOWN FOR CITIES ---------------------------
-
-document.addEventListener("DOMContentLoaded", function () {
     const cities = [
         "Örebro",
         "Kungsbacka",
@@ -383,37 +388,69 @@ document.addEventListener("DOMContentLoaded", function () {
         "Grästorp",
         "Sundbyberg",
         "Arjeplog"
-    ];
+        ];
 
-    const input_cities = document.getElementById("cities");
-    const list_cities = document.createElement("div");
-    list_cities.setAttribute("id", "autocomplete-list2");
-    list_cities.setAttribute("class", "autocomplete-items");
-    input_cities.parentNode.appendChild(list_cities);
+    const inputRegions = document.getElementById("region");
+    const inputCities = document.getElementById("cities");
 
-    let activeIndex = -1; // <-- Track which item is selected
+    const regionsDiv = document.querySelector(".regions");
+    const citiesDiv = document.querySelector(".cities");
+    const radioButtons = document.querySelectorAll('input[name="btn-choices"]');
 
-    input_cities.addEventListener("input", function () {
+    // Hide inputs initially
+    regionsDiv.style.display = "none";
+    citiesDiv.style.display = "none";
+
+    // Setup global autocomplete
+    setupAutocomplete(inputRegions, regions);
+    setupAutocomplete(inputCities, cities);
+
+    // Listen for radio button changes
+    radioButtons.forEach(radio => {
+        radio.addEventListener("change", function () {
+            if (this.value === "National") {
+                regionsDiv.style.display = "none";
+                citiesDiv.style.display = "none";
+            } else if (this.value === "Regional") {
+                regionsDiv.style.display = "block";
+                citiesDiv.style.display = "none";
+            } else if (this.value === "Municipal") {
+                regionsDiv.style.display = "none";
+                citiesDiv.style.display = "block";
+            }
+        });
+    });
+});
+
+// Global autocomplete function
+function setupAutocomplete(inputElement, optionsArray) {
+    const listElement = document.createElement("div");
+    listElement.setAttribute("class", "autocomplete-items");
+    inputElement.parentNode.appendChild(listElement);
+
+    let activeIndex = -1;
+
+    inputElement.addEventListener("input", function () {
         const value = this.value.toLowerCase();
-        list_cities.innerHTML = "";
-        activeIndex = -1; // reset active index
+        listElement.innerHTML = "";
+        activeIndex = -1;
 
         if (!value) return;
 
-        const matches_cities = cities.filter(city => city.toLowerCase().startsWith(value));
-        matches_cities.forEach(match => {
-            const item_cities = document.createElement("div");
-            item_cities.innerText = match;
-            item_cities.addEventListener("click", function () {
-                input_cities.value = match;
-                list_cities.innerHTML = "";
+        const matches = optionsArray.filter(option => option.toLowerCase().startsWith(value));
+        matches.forEach(match => {
+            const item = document.createElement("div");
+            item.innerText = match;
+            item.addEventListener("click", function () {
+                inputElement.value = match;
+                listElement.innerHTML = "";
             });
-            list_cities.appendChild(item_cities);
+            listElement.appendChild(item);
         });
     });
 
-    input_cities.addEventListener("keydown", function (e) {
-        const items = list_cities.getElementsByTagName("div");
+    inputElement.addEventListener("keydown", function (e) {
+        const items = listElement.getElementsByTagName("div");
         if (e.key === "ArrowDown") {
             activeIndex++;
             highlightActive(items);
@@ -431,8 +468,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function highlightActive(items) {
-        if (!items) return;
-        // Remove all previous active classes
+        if (!items.length) return;
         for (let i = 0; i < items.length; i++) {
             items[i].classList.remove("autocomplete-active");
         }
@@ -442,10 +478,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.addEventListener("click", function (e) {
-        if (e.target !== input_cities) {
-            list_cities.innerHTML = "";
+        if (e.target !== inputElement) {
+            listElement.innerHTML = "";
         }
     });
-});
-
-
+}
