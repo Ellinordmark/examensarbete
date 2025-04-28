@@ -36,13 +36,32 @@
       <h3 class="poppins-bold">Evaluate</h3>
       <p class="page-intro poppins-regular">Evaluate is for when you already have a list of possible store locations and want the tool to choose the best among them.</p>
       <h4 class="poppins-bold">Upload data</h4>
+      <p class="poppins-regular">Upload a CSV file contatining location data.</p>
       <p class="poppins-regular">
-        Upload a CSV file contatining location data. <br />
         In the CSV file, existing facility locations should be marked 1, and possible locations should be marked 0. You can download an example file
-        <a class="poppins-bold green-text2">here.</a> <br />
-        Please choose whether you want to provide locations with adresses or coordinates.
-        <script src="/script.js"></script>
+        <a class="poppins-bold green-text2" href="../examples/example_file.csv" download> here.</a>
       </p>
+      <p class="poppins-regular">Please choose whether you want to provide locations with adresses or coordinates.</p>
+      <div id="output"></div>
+      <form id="form2" method="POST" action="/action_page.php">
+        <div class="radio-group2">
+          <input type="radio" id="btn-choice6" name="btn-choices3" value="Adresses" />
+          <label for="btn-choice6" class="btn-choices poppins-semibold">Adresses</label>
+          <input type="radio" id="btn-choice7" name="btn-choices3" value="Coordinates" />
+          <label for="btn-choice7" class="btn-choices poppins-semibold">Coordinates</label>
+        </div>
+        <div class="btn-custom-container" style="display: none">
+          <label for="file-upload" id="btn-custom-file" class="btn-custom-file poppins-semibold"> Upload file </label>
+          <input id="file-upload" accept=".csv" type="file" />
+        </div>
+        <h4 class="poppins-bold">Number of facilities</h4>
+        <p class="poppins-regular">Choose the number of facilities you want to locate amongst the possible ones (max: 100).</p>
+        <p class="poppins-regular">If you only want to analyze your existing locations, input 0.</p>
+        <input type="number" id="number-input1" name="number-input1" class="number-input1" min="0" max="100" />
+        <div id="alertMessage" class="alert hidden poppins-regular"></div>
+        <input type="submit" value="Next Step" class="btn-submit poppins-semibold" />
+      </form>
     </main>
+    <script src="/script.js"></script>
   </body>
 </html>

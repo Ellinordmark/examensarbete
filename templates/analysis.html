@@ -40,7 +40,7 @@
       <p class="poppins-regular">You may choose to do the location analysis at the national, regional or municipal levels. Analysis is only available in Sweden.</p>
 
       <div class="contaioner-small">
-        <form id="form1">
+        <form id="form1" method="POST" action="/action_page.php">
           <div class="radio-group">
             <input type="radio" id="btn-choice1" name="btn-choices" value="National" />
             <label for="btn-choice1" class="btn-choices poppins-semibold">National</label>
@@ -73,7 +73,6 @@
             <input type="radio" id="btn-choice5" name="btn-choices2" value="Discover" />
             <label for="btn-choice5" class="btn-choices poppins-semibold">Discover</label>
           </div>
-
           <div id="alertMessage" class="alert hidden poppins-regular"></div>
           <input type="submit" value="Next Step" class="btn-submit poppins-semibold" />
         </form>
