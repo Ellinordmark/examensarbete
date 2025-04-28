@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eCOmpass</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container navbar">
+      <nav>
+        <h2><a href="index.html" class="poppins-black">eCOmpass</a></h2>
+        <ul class="nav-flex">
+          <li><a href="research.html" class="poppins-semibold">The underlying research</a></li>
+          <li><a href="about.html" class="poppins-semibold">Information about the system</a></li>
+        </ul>
+      </nav>
+    </div>
+    <main>
+      <div class="btn-back">
+        <a href="analysis.html" class="text-back poppins-semibold">
+          <svg class="icon" width="23" height="17" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M22.81 8.519a1.255 1.255 0 0 1-1.255 1.254H4.51l4.55 4.55a1.254 1.254 0 0 1-1.773 1.773L.596 9.406a1.255 1.255 0 0 1 0-1.774l6.69-6.69A1.255 1.255 0 0 1 9.06 2.713l-4.55 4.55h17.045A1.255 1.255 0 0 1 22.81 8.52Z"
+            />
+          </svg>
+          Go back
+        </a>
+      </div>
+      <h3 class="poppins-bold">Evaluate</h3>
+      <p class="page-intro poppins-regular">Evaluate is for when you already have a list of possible store locations and want the tool to choose the best among them.</p>
+      <h4 class="poppins-bold">Upload data</h4>
+      <p class="poppins-regular">
+        Upload a CSV file contatining location data. <br />
+        In the CSV file, existing facility locations should be marked 1, and possible locations should be marked 0. You can download an example file
+        <a class="poppins-bold green-text2">here.</a> <br />
+        Please choose whether you want to provide locations with adresses or coordinates.
+        <script src="/script.js"></script>
+      </p>
+    </main>
+  </body>
+</html>

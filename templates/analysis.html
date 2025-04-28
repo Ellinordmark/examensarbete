@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>eCOmpass</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
       rel="stylesheet"
@@ -13,54 +13,76 @@
   </head>
   <body>
     <div class="container navbar">
-        <nav>
-          <h2><a href="index.html" class="poppins-black">eCOmpass</a></h2>
-          <ul class="nav-flex">
-            <li><a href="research.html" class="poppins-semibold">The underlying research</a></li>
-            <li><a href="about.html" class="poppins-semibold">Information about the system</a></li>
-          </ul>
-        </nav>
-      </div>
+      <nav>
+        <h2><a href="index.html" class="poppins-black">eCOmpass</a></h2>
+        <ul class="nav-flex">
+          <li><a href="research.html" class="poppins-semibold">The underlying research</a></li>
+          <li><a href="about.html" class="poppins-semibold">Information about the system</a></li>
+        </ul>
+      </nav>
+    </div>
     <main>
-        <div class="btn-back">
-            <a href="index.html" class="text-back poppins-semibold">
-                <svg class="icon" width="23" height="17" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M22.81 8.519a1.255 1.255 0 0 1-1.255 1.254H4.51l4.55 4.55a1.254 1.254 0 0 1-1.773 1.773L.596 9.406a1.255 1.255 0 0 1 0-1.774l6.69-6.69A1.255 1.255 0 0 1 9.06 2.713l-4.55 4.55h17.045A1.255 1.255 0 0 1 22.81 8.52Z"/>
-                </svg>Go back</a>
-        </div>
-        <h3 class="poppins-black">Select your analysis mode</h3> 
-        <p class="page-intro poppins-regular">In this stage, you’ll select how you want to use eCOmpass. Start by choosing the approach that best fits your current planning needs.</p>
-        <h4 class="poppins-bold"> Geographical area of interest</h4>
-        <p class="poppins-regular">You may choose to do the location analysis at the national, regional or municipal levels. Analysis is only available in Sweden. </p> 
+      <div class="btn-back">
+        <a href="index.html" class="text-back poppins-semibold">
+          <svg class="icon" width="23" height="17" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M22.81 8.519a1.255 1.255 0 0 1-1.255 1.254H4.51l4.55 4.55a1.254 1.254 0 0 1-1.773 1.773L.596 9.406a1.255 1.255 0 0 1 0-1.774l6.69-6.69A1.255 1.255 0 0 1 9.06 2.713l-4.55 4.55h17.045A1.255 1.255 0 0 1 22.81 8.52Z"
+            />
+          </svg>
+          Go back
+        </a>
+      </div>
+      <h3 class="poppins-black">Select your analysis mode</h3>
+      <p class="page-intro poppins-regular">In this stage, you’ll select how you want to use eCOmpass. Start by choosing the approach that best fits your current planning needs.</p>
+      <h4 class="poppins-bold">Geographical area of interest</h4>
+      <p class="poppins-regular">You may choose to do the location analysis at the national, regional or municipal levels. Analysis is only available in Sweden.</p>
 
-        <div class="contaioner-small">
-            <form method="post" action="/"> 
-                <div class="radio-group">
-                    <input type="radio" id="btn-choice1" name="btn-choices" value="National">
-                    <label for="btn-choice1" class="btn-choices poppins-semibold">National</label>
+      <div class="contaioner-small">
+        <form id="form1">
+          <div class="radio-group">
+            <input type="radio" id="btn-choice1" name="btn-choices" value="National" />
+            <label for="btn-choice1" class="btn-choices poppins-semibold">National</label>
 
-                    <input type="radio" id="btn-choice2" name="btn-choices" value="Regional">
-                    <label for="btn-choice2" class="btn-choices poppins-semibold">Regional</label>
-                    
-                    <input type="radio" id="btn-choice3" name="btn-choices" value="Municipal">
-                    <label for="btn-choice3" class="btn-choices poppins-semibold">Municipal</label>
-                </div>
-                <div class="regions">
-                    <p>Choose region</p>
-                    <input type="text" id="region" name="region" required autocomplete="off">
-                </div>
-                <div class="cities">
-                    <p>Choose Municipality</p>
-                    <input type="text" id="cities" name="cities" required autocomplete="off">
-                </div>
-                
-            </form> 
-        </div>
+            <input type="radio" id="btn-choice2" name="btn-choices" value="Regional" />
+            <label for="btn-choice2" class="btn-choices poppins-semibold">Regional</label>
+
+            <input type="radio" id="btn-choice3" name="btn-choices" value="Municipal" />
+            <label for="btn-choice3" class="btn-choices poppins-semibold">Municipal</label>
+          </div>
+
+          <div class="regions">
+            <p class="poppins-regular">Choose region</p>
+            <input type="text" id="region" name="region" autocomplete="off" class="txt-input poppins-regular" placeholder="Region" />
+          </div>
+
+          <div class="cities">
+            <p class="poppins-regular">Choose municipality</p>
+            <input type="text" id="cities" name="cities" autocomplete="off" class="txt-input poppins-regular" placeholder="Municipality" />
+          </div>
+
+          <h4 class="poppins-bold">Evaluate or Discover facilities</h4>
+          <p class="poppins-regular">Choose <span class="poppins-bold">Evaluate</span> if you already have a set of possible locations and want the tool to identify the most optimal ones.</p>
+          <p class="poppins-regular">Choose <span class="poppins-bold">Discover</span> if you want the tool to find the best new store locations without providing suggestions yourself.</p>
+
+          <div class="radio-group2">
+            <input type="radio" id="btn-choice4" name="btn-choices2" value="Evaluate" />
+            <label for="btn-choice4" class="btn-choices poppins-semibold">Evaluate</label>
+
+            <input type="radio" id="btn-choice5" name="btn-choices2" value="Discover" />
+            <label for="btn-choice5" class="btn-choices poppins-semibold">Discover</label>
+          </div>
+
+          <div id="alertMessage" class="alert hidden poppins-regular"></div>
+          <input type="submit" value="Next Step" class="btn-submit poppins-semibold" />
+        </form>
+      </div>
     </main>
-    <svg id="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1117">
-        <path d="M1440 162.46V1117H0V792.22c342.65-231.58 586.15 92.13 964.26-199.16 78.39-60.4 275.99-262.39 475.74-430.6Z" style="fill:#fcf8f1"/>
-        <path d="M1440 162.46V1117H0V792.22c342.65-231.58 586.15 92.13 964.26-199.16 78.39-60.4 275.99-262.39 475.74-430.6Z" style="fill:none;stroke:#fcf8f1;stroke-miterlimit:10"/>
+    <svg id="wave" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 1117">
+      <path d="M1440 162.46V1117H0V792.22c342.65-231.58 586.15 92.13 964.26-199.16 78.39-60.4 275.99-262.39 475.74-430.6Z" style="fill: #fcf8f1" />
+      <path d="M1440 162.46V1117H0V792.22c342.65-231.58 586.15 92.13 964.26-199.16 78.39-60.4 275.99-262.39 475.74-430.6Z" style="fill: none; stroke: #fcf8f1; stroke-miterlimit: 10" />
     </svg>
     <script src="/script.js"></script>
   </body>
-</html
+</html>
