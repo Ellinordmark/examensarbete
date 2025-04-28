@@ -453,9 +453,66 @@ function setupAutocomplete(input, options) {
 //   }
 // });
 
-const HEJ = document.querySelectorAll("#form1 input");
-const HejLoop = Array.from(HEJ).reduce((acc, input) => ({ ...acc, [input.id]: input.value }), {});
-console.log("HejLoop:", HejLoop);
+// const HEJ = document.querySelectorAll("#form1 input");
+// const HejLoop = Array.from(HEJ).reduce((acc, input) => ({ ...acc, [input.id]: input.value }), {});
+// console.log("HejLoop:", HejLoop);
+
+// -------------------------- HANDLE USER CHOICES --------------------------------------
+window.addEventListener("DOMContentLoaded", (event) => {
+  const form = document.getElementById("form1");
+  const output = document.getElementById("output");
+
+  // Store choices here
+  const userChoices = {};
+
+  // Attach click listeners to choice buttons
+  const choiceButtons = document.querySelectorAll("#form1 button[type='button']");
+  choiceButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Save the button choice when clicked
+      userChoices[button.id] = button.value;
+      console.log("User selected:", userChoices);
+    });
+  });
+
+  // FORM PAGE: when submitting
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Also check if they typed something in 'region'
+      const regionInput = document.getElementById("region");
+      if (regionInput && regionInput.value.trim() !== "") {
+        userChoices["region"] = regionInput.value.trim();
+      }
+
+      console.log("Final saved choices:", userChoices);
+
+      localStorage.setItem("HejLoop", JSON.stringify(userChoices));
+
+      window.location.href = "evaluate.html";
+    });
+  }
+
+  // EVALUATE PAGE: showing the results
+  if (output) {
+    const storedData = localStorage.getItem("HejLoop");
+
+    if (storedData) {
+      const storedHejLoop = JSON.parse(storedData);
+
+      for (const [key, value] of Object.entries(storedHejLoop)) {
+        const p = document.createElement("p");
+        p.textContent = `You have chosen ${key.replace("btn-choice", "")}: ${value}`;
+        p.classList.add("poppins-semibold");
+        output.appendChild(p);
+      }
+    } else {
+      output.textContent = "No submitted data found!";
+    }
+  }
+});
+
 // -------------------------- EVALUATE PAGE --------------------------------------
 // ------------------------ Choose file button ---------------------------------
 
