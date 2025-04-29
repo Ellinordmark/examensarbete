@@ -471,7 +471,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     radio.addEventListener("change", () => {
       if (radio.checked) {
         userChoices["Analysis mode"] = radio.value; // Save whether it's "Evaluate" or "Discover"
-        console.log("User selected analysis mode:", userChoices["Analysis mode"]);
+        console.log("User selected Analysis mode:", userChoices["Analysis mode"]);
       }
     });
   });
@@ -484,14 +484,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
       // Also check if they typed something in 'region'
       const regionInput = document.getElementById("region");
       if (regionInput && regionInput.value.trim() !== "") {
-        userChoices["region"] = regionInput.value.trim();
+        userChoices["Region"] = regionInput.value.trim();
       }
 
       // Check if they typed something in 'municipality'
 
       const municipalInput = document.getElementById("municipality");
       if (municipalInput && municipalInput.value.trim() !== "") {
-        userChoices["municipality"] = municipalInput.value.trim();
+        userChoices["Municipality"] = municipalInput.value.trim();
       }
 
       console.log("Final saved choices:", userChoices);
@@ -511,9 +511,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
       for (const [key, value] of Object.entries(storedchoicesLocal)) {
         const p = document.createElement("p");
-        p.textContent = `You have chosen ${key.replace("btn-choice", "")}: ${value}`;
-        p.classList.add("poppins-regular");
-        output.appendChild(p);
+        if (key == "Municipality" || key == "Region" || key == "Analysis mode") {
+          p.textContent = `${key.replace("btn-choice", "")}: ${value}`;
+          p.classList.add("poppins-regular");
+          output.appendChild(p);
+        } else {
+          p.textContent = `Number of ${key.replace("btn-choice", "")}: ${value}`;
+          p.classList.add("poppins-regular");
+          output.appendChild(p);
+        }
       }
     } else {
       output.textContent = "No submitted data found!";
