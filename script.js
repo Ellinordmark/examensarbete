@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "Västmanland",
     "Stockholm",
   ];
-  const cities = [
+  const municipality = [
     "Örebro",
     "Kungsbacka",
     "Örnsköldsvik",
@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const inputs = {
     Regional: document.querySelector(".regions"),
-    Municipal: document.querySelector(".cities"),
+    Municipal: document.querySelector(".municipality"),
   };
   const radioButtons = document.querySelectorAll('input[name="btn-choices"]');
   const form = document.getElementById("form1");
@@ -328,7 +328,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Setup autocomplete for both inputs
   setupAutocomplete(document.getElementById("region"), regions);
-  setupAutocomplete(document.getElementById("cities"), cities);
+  setupAutocomplete(document.getElementById("municipality"), municipality);
 
   // Listen to radio button changes
   radioButtons.forEach((radio) => {
@@ -344,30 +344,74 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("form1").addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent default form submission
 
-    const btnChoice = document.querySelector('input[name="btn-choices"]:checked');
-    const btnChoice2 = document.querySelector('input[name="btn-choices2"]:checked');
+    const btnChoice = document.querySelector('input[name="btn-choices"]:checked'); //Region & Municipal
+    const btnChoice2 = document.querySelector('input[name="btn-choices2"]:checked'); //Discover & evaluate
     const region = document.getElementById("region").value.trim();
-    const cities = document.getElementById("cities").value.trim();
+    const municipality2 = document.getElementById("municipality").value.trim();
     const alertMessage = document.getElementById("alertMessage");
 
     // Clear previous alert messages
     alertMessage.textContent = "";
     alertMessage.classList.add("hidden");
 
-    if (!btnChoice || !btnChoice2) {
+    if (!btnChoice) {
+      alertMessage.textContent = "Please select geographical area.";
+      alertMessage.classList.remove("hidden");
+      return;
+    }
+
+    if (!btnChoice2) {
       alertMessage.textContent = "Please select Discover or Evaluate.";
       alertMessage.classList.remove("hidden");
       return;
     }
 
     // Validation depending on selected btnChoice
-    if (btnChoice.value === "Regional" && region === "") {
-      alertMessage.textContent = "Please enter a region.";
-      alertMessage.classList.remove("hidden");
-      return;
+    if (btnChoice.value === "Regional") {
+      document.getElementById("municipality").value = "";
+      if (region === "" || !regions.includes(region)) {
+        alertMessage.textContent = "Please enter a valid region.";
+        alertMessage.classList.remove("hidden");
+        return;
+      }
     }
-    if (btnChoice.value === "Municipal" && cities === "") {
-      alertMessage.textContent = "Please enter a municipality.";
+
+    if (btnChoice.value === "Municipal") {
+      document.getElementById("region").value = "";
+      if (municipality2 === "" || !municipality.includes(municipality2)) {
+        alertMessage.textContent = "Please enter a valid municipality.";
+        alertMessage.classList.remove("hidden");
+        return;
+      }
+    }
+
+    // // Validation depending on selected btnChoice
+    // if (btnChoice.value === "Regional" && region === "") {
+    //   alertMessage.textContent = "Please enter a region.";
+    //   alertMessage.classList.remove("hidden");
+    //   return;
+    // }
+
+    // if (!regions.includes(region)) {
+    //   alertMessage.textContent = "Please enter a valid region from the list.";
+    //   alertMessage.classList.remove("hidden");
+    //   return;
+    // }
+
+    // if (btnChoice.value === "Municipal" && municipality2 === "") {
+    //   alertMessage.textContent = "Please enter a municipality.";
+    //   alertMessage.classList.remove("hidden");
+    //   return;
+    // }
+
+    // if (!municipality.includes(municipality2)) {
+    //   alertMessage.textContent = "Please enter a valid municipality from the list.";
+    //   alertMessage.classList.remove("hidden");
+    //   return;
+    // }
+
+    if (btnChoice.value === "") {
+      alertMessage.textContent = "Please choose Geograpical area of interest.";
       alertMessage.classList.remove("hidden");
       return;
     }
@@ -436,27 +480,6 @@ function setupAutocomplete(input, options) {
   });
 }
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   const params = new URLSearchParams(window.location.search);
-
-//   const region = params.get("Regional");
-//   const city = params.get("Municipality");
-
-//   console.log(region, city); // LÄGG TILL denna för att felsöka!
-
-//   const output = document.getElementById("output");
-
-//   if (region && city) {
-//     output.innerText = `You selected region: ${region}, city: ${city}`;
-//   } else {
-//     output.innerText = "Missing information!";
-//   }
-// });
-
-// const HEJ = document.querySelectorAll("#form1 input");
-// const HejLoop = Array.from(HEJ).reduce((acc, input) => ({ ...acc, [input.id]: input.value }), {});
-// console.log("HejLoop:", HejLoop);
-
 // -------------------------- HANDLE USER CHOICES --------------------------------------
 window.addEventListener("DOMContentLoaded", (event) => {
   const form = document.getElementById("form1");
@@ -465,13 +488,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
   // Store choices here
   const userChoices = {};
 
-  // Attach click listeners to choice buttons
-  const choiceButtons = document.querySelectorAll("#form1 button[type='button']");
-  choiceButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      // Save the button choice when clicked
-      userChoices[button.id] = button.value;
-      console.log("User selected:", userChoices);
+  //   Attach click listeners to choice buttons
+  const discoverEvaluateRadios = document.querySelectorAll("#form1 input[name='btn-choices2']");
+  discoverEvaluateRadios.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      if (radio.checked) {
+        userChoices["mode"] = radio.value; // Save whether it's "Evaluate" or "Discover"
+        console.log("User selected mode:", userChoices["mode"]);
+      }
     });
   });
 
@@ -486,22 +510,29 @@ window.addEventListener("DOMContentLoaded", (event) => {
         userChoices["region"] = regionInput.value.trim();
       }
 
+      // Check if they typed something in 'municipality'
+
+      const municipalInput = document.getElementById("municipality");
+      if (municipalInput && municipalInput.value.trim() !== "") {
+        userChoices["municipality"] = municipalInput.value.trim();
+      }
+
       console.log("Final saved choices:", userChoices);
 
-      localStorage.setItem("HejLoop", JSON.stringify(userChoices));
-
-      window.location.href = "evaluate.html";
+      localStorage.setItem("choicesLocal", JSON.stringify(userChoices));
     });
+
+    // window.location.href = "verify.html";
   }
 
   // EVALUATE PAGE: showing the results
   if (output) {
-    const storedData = localStorage.getItem("HejLoop");
+    const storedData = localStorage.getItem("choicesLocal");
 
     if (storedData) {
-      const storedHejLoop = JSON.parse(storedData);
+      const storedchoicesLocal = JSON.parse(storedData);
 
-      for (const [key, value] of Object.entries(storedHejLoop)) {
+      for (const [key, value] of Object.entries(storedchoicesLocal)) {
         const p = document.createElement("p");
         p.textContent = `You have chosen ${key.replace("btn-choice", "")}: ${value}`;
         p.classList.add("poppins-semibold");

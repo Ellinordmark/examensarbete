@@ -291,7 +291,7 @@ input[type="radio"]:checked + .btn-choices {
   color: var(--white);
 }
 
-/* ------------------- CITIES/REGIONS FORM -------------------- */
+/* ------------------- MUNICIPALITY /REGIONS FORM -------------------- */
 
 .autocomplete-items {
   border: 0.0625rem solid #ddd;
@@ -320,12 +320,12 @@ input[type="radio"]:checked + .btn-choices {
 }
 
 .regions,
-.cities {
+.municipality {
   margin-top: 2rem;
 }
 
 .regions p,
-.cities p {
+.municipality p {
   margin-bottom: 0.5rem;
 }
 /* --------------- NAVBAR ----------------- */
