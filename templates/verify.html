@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <div class="container navbar">
@@ -17,7 +18,7 @@
     </div>
     <main>
       <div class="btn-back">
-        <a href="analysis.html" class="text-back poppins-semibold">
+        <a href="evaluate.html" class="text-back poppins-semibold">
           <svg class="icon" width="23" height="17" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
               fill-rule="evenodd"
@@ -28,8 +29,12 @@
           Go back
         </a>
       </div>
+      <h3 class="poppins-black">Verify your choices and facility locations</h3>
+      <p class="page-intro poppins-regular"></p>
+      <div id="output"></div>
     </main>
-    <h1>Verify</h1>
-    <div id="output"></div>
+
+    <script src="/evaluate.js"></script>
+    <script src="/analysis.js"></script>
   </body>
 </html>

@@ -56,3 +56,62 @@ radioButtons.forEach((button) => {
     }
   });
 });
+
+//SUBMIT
+
+window.addEventListener("DOMContentLoaded", (event) => {
+  const form2 = document.getElementById("form2");
+  const outputEval = document.getElementById("outputEval");
+
+  // Store choices here
+  let userChoices = JSON.parse(localStorage.getItem("choicesLocal")) || {};
+
+  //   Attach click listeners to choice buttons
+  // const discoverEvaluateRadios = document.querySelectorAll("#form1 input[name='btn-choices2']");
+  // discoverEvaluateRadios.forEach((radio) => {
+  //   radio.addEventListener("change", () => {
+  //     if (radio.checked) {
+  //       userChoices["mode"] = radio.value; // Save whether it's "Evaluate" or "Discover"
+  //       console.log("User selected mode:", userChoices["mode"]);
+  //     }
+  //   });
+  // });
+
+  // FORM PAGE: when submitting
+  if (form2) {
+    form2.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const facilityInput = document.getElementById("number-input1");
+      if (facilityInput && facilityInput.value.trim() !== "") {
+        userChoices["facilities"] = facilityInput.value.trim();
+      }
+
+      localStorage.setItem("choicesLocal", JSON.stringify(userChoices));
+      console.log("Saved to localStorage:", JSON.stringify(userChoices));
+      // Delay navigation slightly to ensure localStorage is written
+      setTimeout(() => {
+        window.location.href = "verify.html";
+      }, 50); // 50ms is usually enough
+    });
+  }
+
+  // EVALUATE PAGE: showing the results
+  //   if (outputEval) {
+  //     const storedData = localStorage.getItem("choicesLocal");
+
+  //     if (storedData) {
+  //       const storedchoicesLocal = JSON.parse(storedData);
+
+  //       for (const [key, value] of Object.entries(storedchoicesLocal)) {
+  //         const p = document.createElement("p");
+  //         p.textContent = `blablabla ${key.replace("btn-choice", "")}: ${value}`;
+  //         p.classList.add("poppins-semibold");
+  //         outputEval.appendChild(p);
+  //       }
+  //     } else {
+  //       outputEval.textContent = "No submitted data found!";
+  //     }
+  //     console.log("Number of facilites choosen:", userChoices);
+  //   }
+});

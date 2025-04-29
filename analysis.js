@@ -470,8 +470,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   discoverEvaluateRadios.forEach((radio) => {
     radio.addEventListener("change", () => {
       if (radio.checked) {
-        userChoices["mode"] = radio.value; // Save whether it's "Evaluate" or "Discover"
-        console.log("User selected mode:", userChoices["mode"]);
+        userChoices["Analysis mode"] = radio.value; // Save whether it's "Evaluate" or "Discover"
+        console.log("User selected analysis mode:", userChoices["Analysis mode"]);
       }
     });
   });
@@ -512,7 +512,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       for (const [key, value] of Object.entries(storedchoicesLocal)) {
         const p = document.createElement("p");
         p.textContent = `You have chosen ${key.replace("btn-choice", "")}: ${value}`;
-        p.classList.add("poppins-semibold");
+        p.classList.add("poppins-regular");
         output.appendChild(p);
       }
     } else {
