@@ -398,7 +398,7 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "discover.html"; // One page for Discover
     } else {
       alertMessage.textContent = "Invalid form selection.";
-      alertMessage.classList.remove("hidden");
+      alertMessage.classList.remove("none");
     }
   });
 });

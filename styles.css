@@ -245,7 +245,7 @@ input[type="number"] {
 }
 
 .btn-submit {
-  margin-top: 5rem;
+  margin-top: 4rem;
   background-color: var(--light-green);
   border-radius: 1.25rem;
   color: var(--white);
