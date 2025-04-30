@@ -15,6 +15,14 @@ radioButtons.forEach((button) => {
   });
 });
 
+// Save if the user picked YES or NO
+document.getElementById("form3").addEventListener("submit", function (e) {
+  const selected = document.querySelector('input[name="btn-choices4"]:checked');
+  if (selected) {
+    localStorage.setItem("hasExistingFacilities", selected.value);
+  }
+});
+
 // -----------------------UPLOAD BUTTON ------------------------
 
 const fileUpload = document.getElementById("file-upload");
