@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  </head>
+  <body>
+    <div class="container navbar">
+      <nav>
+        <h2><a href="index.html" class="poppins-black">eCOmpass</a></h2>
+        <ul class="nav-flex">
+          <li><a href="research.html" class="poppins-semibold">The underlying research</a></li>
+          <li><a href="about.html" class="poppins-semibold">About the system</a></li>
+        </ul>
+      </nav>
+    </div>
+    <main>
+      <h3 class="poppins-black">Results</h3>
+      <p class="poppins-regular">From the customers home to the closest facility, an average travel distance of <span class="poppins-bold">3.13 km</span> was observed.</p>
+      <p class="poppins-regular">
+        An average of <span class="poppins-bold">0.47 kg</span> of CO₂ emissions per customer was observed, based on an average emission rate of <span class="poppins-bold">0.15 kg/km</span> and the
+        average travel distance of <span class="poppins-bold">3.13 km</span>.
+      </p>
+      <button type="button" class="collapsible poppins-bold">Additional information <span class="chevron"></span></button>
+      <div class="content">
+        <p class="poppins-regular">A total minimized weighted CO2 emissions of 21 924.83 Kg was observed. <br />A total minimized weighted distance of 146 165.53 Km was observed.</p>
+      </div>
+      <div class="map" id="map" style="height: 38rem; width: 100%"></div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="/resultsMap.js"></script>
+  </body>
+</html>

@@ -16,24 +16,24 @@
         <h2><a href="index.html" class="poppins-black">eCOmpass</a></h2>
         <ul class="nav-flex">
           <li><a href="research.html" class="poppins-semibold">The underlying research</a></li>
-          <li><a href="about.html" class="poppins-semibold">Information about the system</a></li>
+          <li><a href="about.html" class="poppins-semibold">About the system</a></li>
         </ul>
       </nav>
     </div>
+    <div class="btn-back">
+      <a href="analysis.html" class="text-back poppins-semibold">
+        <svg class="icon" width="23" height="17" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M22.81 8.519a1.255 1.255 0 0 1-1.255 1.254H4.51l4.55 4.55a1.254 1.254 0 0 1-1.773 1.773L.596 9.406a1.255 1.255 0 0 1 0-1.774l6.69-6.69A1.255 1.255 0 0 1 9.06 2.713l-4.55 4.55h17.045A1.255 1.255 0 0 1 22.81 8.52Z"
+          />
+        </svg>
+        Go back
+      </a>
+    </div>
     <main>
-      <div class="btn-back">
-        <a href="analysis.html" class="text-back poppins-semibold">
-          <svg class="icon" width="23" height="17" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M22.81 8.519a1.255 1.255 0 0 1-1.255 1.254H4.51l4.55 4.55a1.254 1.254 0 0 1-1.773 1.773L.596 9.406a1.255 1.255 0 0 1 0-1.774l6.69-6.69A1.255 1.255 0 0 1 9.06 2.713l-4.55 4.55h17.045A1.255 1.255 0 0 1 22.81 8.52Z"
-            />
-          </svg>
-          Go back
-        </a>
-      </div>
-      <h3 class="poppins-bold">Discover</h3>
+      <h3 class="poppins-black">Discover</h3>
       <p class="poppins-regular page-intro">Discover is for when you want to find the best locations to open new facilities, without providing any suggested locations yourself.</p>
       <h4 class="poppins-bold">Existing facilities?</h4>
       <p class="poppins-regular">You may get recommended facilty locations based solely on the systems calculation, or with existing facilities taken into consideration.</p>
@@ -45,9 +45,24 @@
         <label for="btn-choice9" class="btn-choices poppins-semibold">No</label>
       </div>
 
-      <div class="btn-custom-container" style="display: none">
-        <label for="file-upload" id="btn-custom-file" class="btn-custom-file poppins-semibold"> Upload file </label>
-        <input id="file-upload" accept=".csv" type="file" />
+      <div class="upload-container" style="display: none">
+        <h4 class="poppins-bold">Upload data</h4>
+        <p class="poppins-regular">Upload a CSV file contatining location data.</p>
+        <p class="poppins-regular">
+          In the CSV file, existing facility locations should be marked 1. Do not include any possible or new locations marked as 0 in the CSV — Discovery mode is only for finding new locations. You can download an example file
+          <a class="poppins-bold green-text2" href="../examples/discover_example_file.csv" download> here.</a>
+        </p>
+        <p class="poppins-regular">Please choose whether you want to provide locations with adresses or coordinates.</p>
+        
+        <div class="radio-group2">
+          <input type="radio" id="btn-choice6" name="btn-choices3" value="Adresses" />
+          <label for="btn-choice6" class="btn-choices poppins-semibold">Adresses</label>
+          <input type="radio" id="btn-choice7" name="btn-choices3" value="Coordinates" />
+          <label for="btn-choice7" class="btn-choices poppins-semibold">Coordinates</label>
+        <div class="btn-custom-container">
+          <label for="file-upload" id="btn-custom-file" class="btn-custom-file poppins-semibold"> Upload file </label>
+          <input id="file-upload" accept=".csv" type="file" />
+      </div>
       </div>
       <h4 class="poppins-bold">Number of facilities</h4>
       <p class="poppins-regular">Choose the number of facilities you want to locate amongst the possible ones (max: 100).</p>

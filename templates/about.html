@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  </head>
+  <body>
+    <div class="container navbar">
+      <nav>
+        <h2><a href="index.html" class="poppins-black">eCOmpass</a></h2>
+        <ul class="nav-flex">
+          <li><a href="research.html" class="poppins-semibold">The underlying research</a></li>
+          <li><a href="about.html" class="poppins-semibold">About the system</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="btn-back">
+      <a onclick="history.back()" class="text-back poppins-semibold">
+        <svg class="icon" width="23" height="17" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M22.81 8.519a1.255 1.255 0 0 1-1.255 1.254H4.51l4.55 4.55a1.254 1.254 0 0 1-1.773 1.773L.596 9.406a1.255 1.255 0 0 1 0-1.774l6.69-6.69A1.255 1.255 0 0 1 9.06 2.713l-4.55 4.55h17.045A1.255 1.255 0 0 1 22.81 8.52Z"
+          />
+        </svg>
+        Go back
+      </a>
+    </div>
+    <main>
+      <div class="container">
+        <h3 class="poppins-black">About the system</h3>
+        <p class="poppins-regular page-intro">
+          The goal of eCOmpass is to reduce the CO2 emissions from last-mile transportations (from retail stores to the consumer's residence) by finding environmentally optimal facility locations.
+          This document provides insights into how eCOmpass can be useful and how the tool works.
+        </p>
+        <h4 class="poppins-bold">Emissions</h4>
+        <p class="poppins-regular">
+          Yearly studies done by Naturvårdsverket shows that private cars have the highest emissions in Sweden among domestic transportation types. The chart below shows the trends for four different
+          types of transportation between 1990 and 2023. The chart includes data for private cars, heavyweight and lightweight trucks, and buses. The transportation types that were excluded are:
+          flights, boats, mopeds and motorcycles, railroad, and A-tractors. They were excluded because of minimal emissions and therefore visibility in the chart.
+        </p>
+        <h5 class="poppins-bold">CO2e Emissions by Transportation Type, in Million Tonnes<br />Sweden, 1990-2023 (anually)</h5>
+        <img src="/images/linechart.svg" alt="Linechart" width="900" />
+        <p class="poppins-regular source">
+          Data source: <a class="green-text2" href="https://www.naturvardsverket.se/data-och-statistik/klimat/vaxthusgaser-utslapp-fran-inrikes-transporter/" target="_blank">Naturvårdsverket</a>
+        </p>
+        <p class="poppins-regular source">
+          CO2e (carbon dioxide equivalent) is a metric measure used to compare the emissions from various greenhouse gases on the basis of their global-warming potential (GWP) by converting amounts of
+          other gases to the equivalent amount of carbon dioxide with the same global warming potential
+          <a class="green-text2" href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Carbon_dioxide_equivalent" target="_blank">(Eurostat)</a>.
+        </p>
+        <p class="poppins-regular">As highlighted above, private cars in Sweden emitted 8.27 million tonnes of CO2e from domestic driving in 2023. But what motivated these trips?</p>
+      </div>
+      <div class="container">
+        <h4 class="poppins-bold">Last-mile</h4>
+        <p class="poppins-regular">
+          A notable part of these trips stems from last-mile retail transport, that is, journeys made by consumers using private cars to transport goods from retail stores to their homes. This segment
+          of transportation is not only the most expensive and inefficient but also the most environmentally detrimental part of the delivery process. In Sweden, nearly one-sixth (15%) of all private
+          car trips in 2023 were primarily for service and shopping purposes.
+        </p>
+        <p class="poppins-regular">
+          While last-mile transportation usaully is focused around service and shopping, eCOmpass can also be used for other types of facilities, such as hospitals and schools.
+        </p>
+        <h5 class="poppins-bold">Number of Journeys by Private Cars, Grouped by Main Purpose<br />Sweden, 2023</h5>
+        <img src="/images/piechart.svg" alt="piechart" width="900" />
+        <p class="poppins-regular source">Data source: <a class="green-text2" href="https://statisticsstudio.com/public/factsheet/6656ead5ed684a2f68839ad5" target="_blank">Trafikanalys</a></p>
+        <p class="poppins-regular">
+          By using eCOmpass to identify environmentally optimal facility locations, we can reduce travel distances, leading to lower CO2 emissions and a more sustainable approach to last-mile
+          logistics.
+        </p>
+      </div>
+      <div class="container">
+        <h4 class="poppins-bold">The difference with eCOmpass</h4>
+        <p class="poppins-regular">
+          Let's take a look at an example used in the study about eCOmpass, showcasing how using eCOmpass can be useful when choosing locations for new facilities. Between the years 2004 and 2016 IKEA
+          (a Swedish furniture store) added nine new stores in Sweden. This was done in two expansions, one between 2004-2007 where they added four new stores, and one between 2013-2016 where they
+          added an additional three stores.
+        </p>
+        <p class="poppins-regular">
+          Before the expansions, the average travel distance for customers was 87 km. The visualization below presents how the travel distance was reduced after each expansion, and highlights that
+          using eCOmpass could have reduced the distance even further.
+        </p>
+        <h5 class="poppins-bold">Comparison between eCOmpass and IKEA expansions, in Kilometers<br />Sweden</h5>
+        <img src="/images/barchart.svg" alt="barchart" width="900" />
+        <p class="poppins-regular source">
+          Data source:
+          <a
+            class="green-text2"
+            href="https://ecompass.se/static/examples/HFI%20WP%2037%20Minimizing%20travel%20distance%20and%20CO2-emissions%20when%20reconfiguring%20retail%20store%20networks.pdf"
+            target="_blank"
+            >Minimizing travel distance and CO2 emissions when reconfiguring retail store networks </a
+          >(Carling. K, Paidi. V, Rudholm. N)
+        </p>
+        <p class="poppins-regular">
+          One notable aspect shown in the graph is that eCOmpass in the first expansion achieved a higher distance reduction than IKEA did in total. In total eCOmpass achieved a reduction of 3.5 km
+          more than IKEA. This might not sound significant but considering IKEA's customer visits in Sweden of 35 million people in 2023 it piles up. If we subjectively assume that 10 million of those
+          visits represents return trips (there and back) made by car, a total of 70 million km would have been saved in travel distance.
+        </p>
+        <p class="poppins-regular">
+          As reported by <a class="green-text2" href="https://www.naturvardsverket.se/data-och-statistik/klimat/vaxthusgaser-utslapp-fran-inrikes-transporter/" target="_blank">Naturvårdsverket</a>,
+          the average CO2 emissions from private cars in Sweden in 2023 were 61 g/km. That means the 70 million km not driven would have prevented the release of <br />427 000 kg of CO2 emissions.
+        </p>
+      </div>
+      <div class="container" id="calculation">
+        <h4 class="poppins-bold">Putting it into context</h4>
+        <p class="poppins-regular">
+          Given that IKEA is one of the largest companies in the world, the large numbers above might seem irrelevant for smaller businesses. To better understand how eCOmpass could benefit different
+          situations, enter a number of customers to calculate how many kilometers of travel distance that could be saved. The calculation is based on the IKEA example showcased above, using a
+          reduction of 3.5 km.
+        </p>
+        <form id="customer-visits">
+          <div class="visits">
+            <label for="customers" class="poppins-regular">Enter customer visits here:</label>
+            <div class="calculation">
+              <input id="customers" class="number-input1" type="number" name="customers" />
+              <button class="btn-submit-small poppins-semibold" type="submit">Calculate</button>
+            </div>
+          </div>
+        </form>
+        <div class="container" id="result"></div>
+      </div>
+      <div class="container">
+        <h4 class="poppins-bold">How eCOmpass works</h4>
+        <p class="poppins-regular">
+          eCOmpass uses the p-median model to calculate the optimal location for facilities. The p-median model determines the optimal placement of a given number of facilities to minimize the average
+          distance between a set of demand points and their assigned facilities.
+        </p>
+        <p class="poppins-regular">
+          The first thing we need to know to implement the p-median model is the population and its distribution in the chosen area. With this information we can create weighted demand nodes, the
+          denser the population, the greater the demand will be. The second thing we need to know is the structure of the road network. This network gives us the locations of where these weighted
+          nodes will be placed.
+        </p>
+        <p class="poppins-regular">
+          Once the weighted nodes have been placed we can choose a number of facilities we want to place, the p-median model ensures that each demand point is served by one facility.
+        </p>
+        <p class="poppins-regular">
+          The visualization below demonstrates how the p-median model links weighted demand nodes based on the placement of facilities. The map represents Dalarna, a region in central Sweden. The
+          demand nodes are positioned in cities, with the size of each circle corresponding to population density—larger circles indicating denser populations. This abstract representation illustrates
+          a potential outcome of the p-median model, though the demand nodes are not entirely representative of Dalarna's actual distribution.
+        </p>
+        <h5 class="poppins-bold">P-median model<br />Dalarna</h5>
+        <!-- <img src="images/p-median.svg" alt="p-median-chart" width="900"> -->
+        <img src="/images/p-median.svg" alt="p-median-chart" width="900" />
+        <p class="poppins-regular source">
+          If you want to know more about how eCOmpass works, please read the
+          <a
+            class="green-text2"
+            href="https://ecompass.se/static/examples/HFI%20WP%2037%20Minimizing%20travel%20distance%20and%20CO2-emissions%20when%20reconfiguring%20retail%20store%20networks.pdf"
+            target="_blank"
+            >published article</a
+          >
+          regarding the publication of this tool.
+        </p>
+        <p class="poppins-regular">
+          While the p-median model is a powerful tool for optimizing facility locations to minimize average travel distances, it does have certain limitations. Key factors it does not account for
+          include:
+        </p>
+        <p class="poppins-regular"><b>Dynamic Demand Variations: </b>The model assumes demand is static. It does not adapt to real-time fluctuations in demand or seasonal changes.</p>
+        <p class="poppins-regular">
+          <b>Road Network Constraints: </b>The model is based on the assumption that the customer takes the shortest possible route, and while this is genrally true it may not always be the case.
+        </p>
+        <p class="poppins-regular">
+          <b>Competitor Influence: </b>The model does not consider the presence of competitors or existing facilities that might influence demand patterns or customer behavior.
+        </p>
+        <p class="poppins-regular">
+          <b>Operational Costs and limitations: </b>While it minimizes travel distances, the model does not factor in operational factors such as land use restrictions or costs for facility setup,
+          maintenance, or staffing expenses, which are critical in real-world scenarios.
+        </p>
+        <p class="poppins-regular">
+          These limitations mean that while the p-median model provides a solid foundation for location optimization, it is often used alongside other tools and considerations to address real-world
+          complexities. The p-median model might not be a suitable model to use to locate facilities for emergency services, such as fire brigades. In those cases, a model such as the maximum coverage
+          model could be used instead.
+        </p>
+      </div>
+      <div class="container">
+        <h4 class="poppins-bold">Conclusion</h4>
+        <p class="poppins-regular">
+          eCOmpass is designed to optimize facility locations using the p-median model. By focusing on environmentally optimal placements, eCOmpass aims to tackle inefficiencies in the most
+          environmentally damaging segment of the delivery process.
+        </p>
+        <p class="poppins-regular">By using eCOmpass, we can reduce CO2 emissions from transportation by minimizing the travel distances between facilities and peoples residences.</p>
+      </div>
+    </main>
+    <script src="/about.js"></script>
+  </body>
+</html>

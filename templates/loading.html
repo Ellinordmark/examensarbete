@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container navbar">
+      <nav>
+        <h2><a href="index.html" class="poppins-black">eCOmpass</a></h2>
+        <ul class="nav-flex">
+          <li><a href="research.html" class="poppins-semibold">The underlying research</a></li>
+          <li><a href="about.html" class="poppins-semibold">About the system</a></li>
+        </ul>
+      </nav>
+    </div>
+    <main>
+      <h3 class="poppins-bold">Calculating</h3>
+      <p class="poppins-regular">Expect the computation time to be a few minutes, with longer times for larger geographical areas and more facilities.</p>
+      <p class="poppins-regular">Please do not exit this page while the system is calculating.</p>
+
+      <div id="loading-bar">
+        <div id="bar"></div>
+      </div>
+      <a href="analysis.html"> <button class="cancel-btn poppins-semibold">Cancel</button></a>
+    </main>
+    <script src="/loading.js"></script>
+  </body>
+</html>

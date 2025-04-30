@@ -18,6 +18,10 @@ main {
   margin: 0rem 8rem;
 }
 
+.btn-back {
+  margin: 0rem 8rem;
+}
+
 .hero {
   margin-top: 10rem;
 }
@@ -30,6 +34,10 @@ main {
 
 .green-text2 {
   color: var(--light-green);
+}
+
+.green-text2:hover {
+  color: var(--dark-green);
 }
 
 p {
@@ -63,6 +71,55 @@ h4 {
   font-size: 1.125rem;
   margin-bottom: 0rem;
   margin-top: 4rem;
+}
+
+h5 {
+  margin-top: 2rem;
+  margin-bottom: 0rem;
+}
+h6 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.source {
+  margin-top: 0rem;
+  font-weight: normal;
+  font-size: 0.75rem;
+  padding-bottom: 0.6rem;
+}
+
+.large {
+  color: #3179b4;
+  font-size: 5rem;
+  font-weight: bold;
+  margin-top: -2rem;
+  margin-bottom: -2rem;
+}
+.medium {
+  color: #3179b4;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: -1.5rem;
+  margin-bottom: -1.5rem;
+}
+
+.center-text {
+  color: #3179b4;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.center-text-small {
+  color: #3179b4;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.center-container {
+  margin-bottom: 3rem;
+  display: flex;
+  text-align: center;
 }
 
 #wave {
@@ -229,12 +286,28 @@ input[type="number"] {
   border: none;
   font-size: 0.875rem;
   padding: 1rem 2.2rem;
-  margin-right: 2.6rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 3rem;
+}
+
+.btn-submit:hover {
+  background-color: var(--dark-green);
+}
+
+.btn-submit-small {
+  background-color: var(--light-green);
+  border-radius: 0.625rem;
+  color: var(--white);
+  border: none;
+  font-size: 0.875rem;
+  padding: 0.7rem 2.2rem;
+  margin-left: 0.5rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
-.btn-submit:hover {
+.btn-submit-small:hover {
   background-color: var(--dark-green);
 }
 
@@ -255,6 +328,41 @@ input[type="number"] {
 
 input[type="file"] {
   display: none;
+}
+
+.cancel-btn {
+  width: 6.4375rem;
+  background-color: var(--warning);
+  border-radius: 0.625rem;
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 0;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  margin-top: 3rem;
+}
+
+.cancel-btn:hover {
+  background-color: #850b00;
+}
+
+.collapsible {
+  background-color: var(--background-color);
+  color: var(--light-green);
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.active,
+.collapsible:hover {
+  color: var(--dark-green);
+}
+
+.content {
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  max-height: 0;
 }
 /* --------------- RADIO-BUTTONS ----------------- */
 
@@ -331,6 +439,18 @@ input[type="radio"]:checked + .btn-choices {
 .municipality p {
   margin-bottom: 0.5rem;
 }
+
+.visits {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.visits label {
+  margin-bottom: 0.875rem;
+  font-size: 0.875rem;
+}
+
 /* --------------- NAVBAR ----------------- */
 .navbar {
   box-shadow: 0rem 1.25rem 1.69rem 0rem rgba(183, 155, 123, 0.07);
@@ -388,6 +508,59 @@ a {
   text-decoration: none;
 }
 
+/* --------------- MAP ----------------- */
+
+.map {
+  /* top | left and right | bottom */
+  margin: 0rem 0 0rem;
+}
+
+.map-text {
+  width: auto;
+  line-height: 2rem;
+}
+/* --------------- LOADING BAR ----------------- */
+
+#loading-bar {
+  margin-top: 4.06rem;
+  width: 30%;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+}
+
+#bar {
+  width: 1%;
+  height: 3.125rem;
+  background-color: var(--light-green);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.percent-text {
+  margin-left: 1rem;
+  color: var(--white);
+}
+
+/* --------------- Chevrons ----------------- */
+
+.chevron::before {
+  border-style: solid;
+  border-width: 0.25em 0.25em 0 0;
+  content: "";
+  display: inline-block;
+  height: 0.45em;
+  left: 0.15em;
+  position: relative;
+  top: 0.15em;
+  transform: rotate(135deg);
+  vertical-align: top;
+  width: 0.45em;
+}
+
+.chevron .active {
+  transform: rotate(-45deg);
+}
 /* --------------- FONTS ----------------- */
 .poppins-thin {
   font-family: "Poppins", sans-serif;

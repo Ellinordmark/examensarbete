@@ -1,14 +1,14 @@
 // -------------------------- YES OR NO --------------------------------------
 // Get the radio buttons and the container
 const radioButtons = document.querySelectorAll('input[name="btn-choices4"]');
-const fileUploadContainer = document.querySelector(".btn-custom-container");
+const fileUploadContainer = document.querySelector(".upload-container");
 
 // Add event listeners to each radio button
 radioButtons.forEach((button) => {
   button.addEventListener("change", () => {
     if (document.querySelector('input[id="btn-choice8"]:checked')) {
       // Show the file upload container if a radio button is selected
-      fileUploadContainer.style.display = "flex";
+      fileUploadContainer.style.display = "block";
     } else {
       fileUploadContainer.style.display = "none";
     }
