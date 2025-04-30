@@ -19,6 +19,18 @@ radioButtons.forEach((button) => {
 
 const fileUpload = document.getElementById("file-upload");
 const customButton = document.getElementById("btn-custom-file");
+// Get the radio buttons and the container
+const radioButtons2 = document.querySelectorAll('input[name="btn-choices3"]');
+const fileUploadContainer2 = document.querySelector(".btn-custom-container");
+
+radioButtons2.forEach((button) => {
+  button.addEventListener("change", () => {
+    if (document.querySelector('input[name="btn-choices3"]:checked')) {
+      // Show the file upload container if a radio button is selected
+      fileUploadContainer2.style.display = "flex";
+    }
+  });
+});
 
 // Create a container for filename and remove button
 const fileInfo = document.createElement("div");
@@ -35,6 +47,8 @@ fileUpload.addEventListener("change", function () {
 
   if (fileUpload.files.length > 0) {
     const fileName = fileUpload.files[0].name;
+
+    console.log(fileName);
 
     // Create and display filename
     const fileNameDisplay = document.createElement("p");
@@ -72,6 +86,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
       const facilityInput = document.getElementById("number-input1");
       const alertMessage = document.getElementById("alertMessage");
       const value = parseInt(facilityInput.value);
+
+      if (document.querySelector('input[id="btn-choice8"]:checked') && fileUpload.files.length === 0) {
+        alertMessage.textContent = "Please upload a CSV file.";
+        alertMessage.classList.remove("hidden");
+        return;
+      } else {
+        alertMessage.classList.add("hidden");
+      }
 
       if (isNaN(value) || value === "" || value < 0 || value > 100) {
         alertMessage.textContent = "Please enter a number between 0 and 100.";

@@ -32,7 +32,7 @@ main {
   color: var(--light-green);
 }
 
-.green-text2:hover {
+.green-text:hover {
   color: var(--dark-green);
   cursor: pointer;
 }
@@ -84,6 +84,7 @@ h6 {
   font-weight: normal;
   font-size: 0.75rem;
   padding-bottom: 0.6rem;
+  width: 80ch;
 }
 
 #wave {

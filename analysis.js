@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("form1").addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent default form submission
 
-    const btnChoice = document.querySelector('input[name="btn-choices"]:checked'); //Region & Municipal
+    const btnChoice = document.querySelector('input[name="btn-choices"]:checked'); // National, region & Municipal
     const btnChoice2 = document.querySelector('input[name="btn-choices2"]:checked'); //Discover & evaluate
     const region = document.getElementById("region").value.trim();
     const municipality2 = document.getElementById("municipality").value.trim();
@@ -480,6 +480,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
   if (form) {
     form.addEventListener("submit", function (event) {
       event.preventDefault();
+      // Also check if they typed something in 'national'
+      const geoChoice = document.querySelector('input[id="btn-choice1"]:checked');
+      if (geoChoice) {
+        userChoices["Nation"] = "Sweden"; // e.g. "National"
+      }
 
       // Also check if they typed something in 'region'
       const regionInput = document.getElementById("region");
@@ -511,11 +516,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
       for (const [key, value] of Object.entries(storedchoicesLocal)) {
         const p = document.createElement("p");
-        if (key == "Municipality" || key == "Region" || key == "Analysis mode") {
+        if (key == "Nation" || key == "Municipality" || key == "Region" || key == "Analysis mode") {
           p.textContent = `${key.replace("btn-choice", "")}: ${value}`;
           p.classList.add("poppins-regular");
           output.appendChild(p);
-        } else {
+        }
+        // if (key == "Nation") {
+        //   p.textContent = `${key.replace("btn-choice", "")}: Sweden`;
+        //   p.classList.add("poppins-regular");
+        //   output.appendChild(p);
+        else {
           p.textContent = `Number of ${key.replace("btn-choice", "")}: ${value}`;
           p.classList.add("poppins-regular");
           output.appendChild(p);

@@ -87,6 +87,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
         userChoices["facilities"] = facilityInput.value.trim();
       }
 
+      if (fileUpload.files.length === 0) {
+        alertMessage.textContent = "Please upload a CSV file.";
+        alertMessage.classList.remove("hidden");
+        return;
+      } else {
+        alertMessage.classList.add("hidden");
+      }
+
       localStorage.setItem("choicesLocal", JSON.stringify(userChoices));
       console.log("Saved to localStorage:", JSON.stringify(userChoices));
       // Delay navigation slightly to ensure localStorage is written
