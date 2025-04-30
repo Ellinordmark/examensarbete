@@ -66,23 +66,23 @@ window.addEventListener("DOMContentLoaded", (event) => {
   // Store choices here
   let userChoices = JSON.parse(localStorage.getItem("choicesLocal")) || {};
 
-  //   Attach click listeners to choice buttons
-  // const discoverEvaluateRadios = document.querySelectorAll("#form1 input[name='btn-choices2']");
-  // discoverEvaluateRadios.forEach((radio) => {
-  //   radio.addEventListener("change", () => {
-  //     if (radio.checked) {
-  //       userChoices["mode"] = radio.value; // Save whether it's "Evaluate" or "Discover"
-  //       console.log("User selected mode:", userChoices["mode"]);
-  //     }
-  //   });
-  // });
-
   // FORM PAGE: when submitting
   if (form2) {
     form2.addEventListener("submit", function (event) {
       event.preventDefault();
 
       const facilityInput = document.getElementById("number-input1");
+      const alertMessage = document.getElementById("alertMessage");
+      const value = parseInt(facilityInput.value);
+
+      if (isNaN(value) || value === "" || value < 0 || value > 100) {
+        alertMessage.textContent = "Please enter a number between 0 and 100.";
+        alertMessage.classList.remove("hidden");
+        return;
+      } else {
+        alertMessage.classList.add("hidden");
+      }
+
       if (facilityInput && facilityInput.value.trim() !== "") {
         userChoices["facilities"] = facilityInput.value.trim();
       }
@@ -95,23 +95,4 @@ window.addEventListener("DOMContentLoaded", (event) => {
       }, 50); // 50ms is usually enough
     });
   }
-
-  // EVALUATE PAGE: showing the results
-  //   if (outputEval) {
-  //     const storedData = localStorage.getItem("choicesLocal");
-
-  //     if (storedData) {
-  //       const storedchoicesLocal = JSON.parse(storedData);
-
-  //       for (const [key, value] of Object.entries(storedchoicesLocal)) {
-  //         const p = document.createElement("p");
-  //         p.textContent = `blablabla ${key.replace("btn-choice", "")}: ${value}`;
-  //         p.classList.add("poppins-semibold");
-  //         outputEval.appendChild(p);
-  //       }
-  //     } else {
-  //       outputEval.textContent = "No submitted data found!";
-  //     }
-  //     console.log("Number of facilites choosen:", userChoices);
-  //   }
 });

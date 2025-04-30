@@ -56,3 +56,41 @@ fileUpload.addEventListener("change", function () {
     fileInfo.appendChild(removeButton);
   }
 });
+
+window.addEventListener("DOMContentLoaded", (event) => {
+  const form3 = document.getElementById("form3");
+  const outputEval = document.getElementById("outputEval");
+
+  // Store choices here
+  let userChoices = JSON.parse(localStorage.getItem("choicesLocal")) || {};
+
+  // FORM PAGE: when submitting
+  if (form3) {
+    form3.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const facilityInput = document.getElementById("number-input1");
+      const alertMessage = document.getElementById("alertMessage");
+      const value = parseInt(facilityInput.value);
+
+      if (isNaN(value) || value === "" || value < 0 || value > 100) {
+        alertMessage.textContent = "Please enter a number between 0 and 100.";
+        alertMessage.classList.remove("hidden");
+        return;
+      } else {
+        alertMessage.classList.add("hidden");
+      }
+
+      if (facilityInput && facilityInput.value.trim() !== "") {
+        userChoices["facilities"] = facilityInput.value.trim();
+      }
+
+      localStorage.setItem("choicesLocal", JSON.stringify(userChoices));
+      console.log("Saved to localStorage:", JSON.stringify(userChoices));
+      // Delay navigation slightly to ensure localStorage is written
+      setTimeout(() => {
+        window.location.href = "verify.html";
+      }, 50); // 50ms is usually enough
+    });
+  }
+});

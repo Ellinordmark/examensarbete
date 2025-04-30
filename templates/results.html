@@ -28,13 +28,29 @@
         An average of <span class="poppins-bold">0.47 kg</span> of CO₂ emissions per customer was observed, based on an average emission rate of <span class="poppins-bold">0.15 kg/km</span> and the
         average travel distance of <span class="poppins-bold">3.13 km</span>.
       </p>
-      <button type="button" class="collapsible poppins-bold">Additional information <span class="chevron"></span></button>
+      <button type="button" class="collapsible green-text poppins-bold">Additional information <span class="chevron"></span></button>
       <div class="content">
-        <p class="poppins-regular">A total minimized weighted CO2 emissions of 21 924.83 Kg was observed. <br />A total minimized weighted distance of 146 165.53 Km was observed.</p>
+        <p class="poppins-regular">
+          A total minimized weighted CO2 emissions of <span class="poppins-bold">21 924.83 Kg</span> was observed. <br />A total minimized weighted distance of
+          <span class="poppins-bold">146 165.53 Km</span> was observed.
+        </p>
+        <p class="poppins-regular">The total minimized travel distance and CO₂ emissions shown are based on the entire population within the selected area.</p>
+        <p class="poppins-regular">
+          This is useful for large retailers (like IKEA) that serve a wide customer base and need to optimize a full store network. If you're a small business (like a local bakery), it's important to
+          understand that not everyone in the region will visit your store.
+        </p>
+        <p class="poppins-regular">
+          The tool still helps compare potential locations, but the total values may overestimate real-world impact for smaller businesses. Always interpret the results in the context of your business
+          size and target customers.
+        </p>
       </div>
+      <button class="btn-export poppins-bold" onclick="exportResults()">Export</button>
       <div class="map" id="map" style="height: 38rem; width: 100%"></div>
+      <a href="index.html"> <button class="btn-first-page poppins-semibold">Back to first page</button> </a>
     </main>
-
+    <svg id="wave" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 691.98">
+      <path d="M1440 6.71c-199.75 168.21-397.35 370.2-475.74 430.6C586.15 728.6 342.65 404.89 0 636.47v55.5h1440V6.71Z" style="fill: #fcf8f1" />
+    </svg>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script src="/resultsMap.js"></script>
   </body>

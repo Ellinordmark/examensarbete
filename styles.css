@@ -32,12 +32,9 @@ main {
   color: var(--light-green);
 }
 
-.green-text2 {
-  color: var(--light-green);
-}
-
 .green-text2:hover {
   color: var(--dark-green);
+  cursor: pointer;
 }
 
 p {
@@ -89,39 +86,6 @@ h6 {
   padding-bottom: 0.6rem;
 }
 
-.large {
-  color: #3179b4;
-  font-size: 5rem;
-  font-weight: bold;
-  margin-top: -2rem;
-  margin-bottom: -2rem;
-}
-.medium {
-  color: #3179b4;
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-top: -1.5rem;
-  margin-bottom: -1.5rem;
-}
-
-.center-text {
-  color: #3179b4;
-  font-size: 1.4rem;
-  font-weight: bold;
-}
-
-.center-text-small {
-  color: #3179b4;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.center-container {
-  margin-bottom: 3rem;
-  display: flex;
-  text-align: center;
-}
-
 #wave {
   filter: drop-shadow(0rem -0.75rem 1.56rem rgba(183, 155, 123, 0.09));
   overflow: hidden;
@@ -136,6 +100,7 @@ h6 {
 
 .icon:hover {
   fill: var(--black);
+  cursor: pointer;
 }
 
 .alert {
@@ -309,6 +274,7 @@ input[type="number"] {
 
 .btn-submit-small:hover {
   background-color: var(--dark-green);
+  cursor: pointer;
 }
 
 .btn-remove-file {
@@ -344,25 +310,40 @@ input[type="file"] {
 
 .cancel-btn:hover {
   background-color: #850b00;
+  cursor: pointer;
 }
 
-.collapsible {
-  background-color: var(--background-color);
-  color: var(--light-green);
+.btn-export {
+  background-color: var(--light-green);
+  border-radius: 1.25rem;
+  color: var(--white);
   border: none;
-  padding: 0;
-  font-size: 1rem;
+  font-size: 0.875rem;
+  padding: 1rem 2.2rem;
+  margin-top: 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.active,
-.collapsible:hover {
-  color: var(--dark-green);
+.btn-export:hover {
+  background-color: var(--dark-green);
+  cursor: pointer;
 }
 
-.content {
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  max-height: 0;
+.btn-first-page {
+  background-color: var(--light-green);
+  border-radius: 1.25rem;
+  color: var(--white);
+  border: none;
+  font-size: 0.875rem;
+  padding: 1rem 2.2rem;
+  margin-top: 5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-first-page:hover {
+  background-color: var(--dark-green);
 }
 /* --------------- RADIO-BUTTONS ----------------- */
 
@@ -512,12 +493,17 @@ a {
 
 .map {
   /* top | left and right | bottom */
-  margin: 0rem 0 0rem;
+  margin: 2rem 0 0rem;
+  border-radius: 0.6rem;
 }
 
 .map-text {
   width: auto;
   line-height: 2rem;
+}
+
+img.huechange {
+  filter: hue-rotate(20deg);
 }
 /* --------------- LOADING BAR ----------------- */
 
@@ -554,13 +540,72 @@ a {
   position: relative;
   top: 0.15em;
   transform: rotate(135deg);
+  /* transform-origin: 50% 60%; */
+  transition: transform 0.3s ease;
   vertical-align: top;
   width: 0.45em;
 }
 
-.chevron .active {
+.collapsible.active .chevron::before {
   transform: rotate(-45deg);
 }
+
+.collapsible {
+  background-color: var(--background-color);
+  color: var(--light-green);
+  border: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  cursor: pointer;
+}
+
+.collapsible:hover {
+  color: var(--dark-green);
+}
+
+.content {
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  max-height: 0;
+}
+
+/* ------------------- ABOUT CALC --------------- */
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.center-container p {
+  width: 80%;
+}
+
+.large {
+  color: var(--light-green);
+  font-size: 5rem;
+  font-weight: bold;
+  margin-top: -2rem;
+  margin-bottom: -2rem;
+}
+.medium {
+  color: var(--light-green);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: -1.5rem;
+  margin-bottom: -1.5rem;
+}
+
+.center-text {
+  color: var(--dark-green);
+  font-size: 1.4rem;
+}
+
+.center-text-small {
+  color: var(--dark-green);
+  font-size: 1rem;
+}
+
 /* --------------- FONTS ----------------- */
 .poppins-thin {
   font-family: "Poppins", sans-serif;

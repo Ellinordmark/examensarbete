@@ -38,38 +38,46 @@
       <h4 class="poppins-bold">Existing facilities?</h4>
       <p class="poppins-regular">You may get recommended facilty locations based solely on the systems calculation, or with existing facilities taken into consideration.</p>
       <p class="poppins-regular">Do you have any existing facilities that need to be taken into consideration?</p>
-      <div class="radio-group2">
-        <input type="radio" id="btn-choice8" name="btn-choices4" value="Yes" />
-        <label for="btn-choice8" class="btn-choices poppins-semibold">Yes</label>
-        <input type="radio" id="btn-choice9" name="btn-choices4" value="No" />
-        <label for="btn-choice9" class="btn-choices poppins-semibold">No</label>
-      </div>
-
-      <div class="upload-container" style="display: none">
-        <h4 class="poppins-bold">Upload data</h4>
-        <p class="poppins-regular">Upload a CSV file contatining location data.</p>
-        <p class="poppins-regular">
-          In the CSV file, existing facility locations should be marked 1. Do not include any possible or new locations marked as 0 in the CSV — Discovery mode is only for finding new locations. You can download an example file
-          <a class="poppins-bold green-text2" href="../examples/discover_example_file.csv" download> here.</a>
-        </p>
-        <p class="poppins-regular">Please choose whether you want to provide locations with adresses or coordinates.</p>
-        
+      <form id="form3" method="POST" action="action_page.php">
         <div class="radio-group2">
-          <input type="radio" id="btn-choice6" name="btn-choices3" value="Adresses" />
-          <label for="btn-choice6" class="btn-choices poppins-semibold">Adresses</label>
-          <input type="radio" id="btn-choice7" name="btn-choices3" value="Coordinates" />
-          <label for="btn-choice7" class="btn-choices poppins-semibold">Coordinates</label>
-        <div class="btn-custom-container">
-          <label for="file-upload" id="btn-custom-file" class="btn-custom-file poppins-semibold"> Upload file </label>
-          <input id="file-upload" accept=".csv" type="file" />
-      </div>
-      </div>
-      <h4 class="poppins-bold">Number of facilities</h4>
-      <p class="poppins-regular">Choose the number of facilities you want to locate amongst the possible ones (max: 100).</p>
-      <p class="poppins-regular">If you only want to analyze your existing locations, input 0.</p>
-      <input type="number" id="number-input1" name="number-input1" class="number-input1" />
-      <div id="alertMessage" class="alert hidden poppins-regular"></div>
-      <script src="/discover.js"></script>
+          <input type="radio" id="btn-choice8" name="btn-choices4" value="Yes" />
+          <label for="btn-choice8" class="btn-choices poppins-semibold">Yes</label>
+          <input type="radio" id="btn-choice9" name="btn-choices4" value="No" />
+          <label for="btn-choice9" class="btn-choices poppins-semibold">No</label>
+        </div>
+
+        <div class="upload-container" style="display: none">
+          <h4 class="poppins-bold">Upload data</h4>
+          <p class="poppins-regular">Upload a CSV file contatining location data.</p>
+          <p class="poppins-regular">
+            In the CSV file, existing facility locations should be marked 1. Do not include any possible or new locations marked as 0 in the CSV — Discovery mode is only for finding new locations. You
+            can download an example file
+            <a class="poppins-bold green-text" href="../examples/discover_example_file.csv" download> here.</a>
+          </p>
+          <p class="poppins-regular">Please choose whether you want to provide locations with adresses or coordinates.</p>
+
+          <div class="radio-group2">
+            <input type="radio" id="btn-choice6" name="btn-choices3" value="Adresses" />
+            <label for="btn-choice6" class="btn-choices poppins-semibold">Adresses</label>
+            <input type="radio" id="btn-choice7" name="btn-choices3" value="Coordinates" />
+            <label for="btn-choice7" class="btn-choices poppins-semibold">Coordinates</label>
+          </div>
+          <div class="btn-custom-container">
+            <label for="file-upload" id="btn-custom-file" class="btn-custom-file poppins-semibold"> Upload file </label>
+            <input id="file-upload" accept=".csv" type="file" />
+          </div>
+        </div>
+        <h4 class="poppins-bold">Number of facilities</h4>
+        <p class="poppins-regular">Choose the number of facilities you want to locate amongst the possible ones (max: 100).</p>
+        <p class="poppins-regular">If you only want to analyze your existing locations, input 0.</p>
+        <input type="number" id="number-input1" name="number-input1" class="number-input1" />
+        <div id="alertMessage" class="alert hidden poppins-regular"></div>
+        <input type="submit" value="Next Step" class="btn-submit poppins-semibold" />
+      </form>
     </main>
+    <svg id="wave" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 691.98">
+      <path d="M1440 6.71c-199.75 168.21-397.35 370.2-475.74 430.6C586.15 728.6 342.65 404.89 0 636.47v55.5h1440V6.71Z" style="fill: #fcf8f1" />
+    </svg>
+    <script src="/discover.js"></script>
   </body>
 </html>
