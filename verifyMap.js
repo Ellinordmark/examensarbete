@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userChoice = localStorage.getItem("hasExistingFacilities");
   const mapElement = document.getElementById("map");
 
-  if (userChoice === "No") {
+  if (!userChoice || userChoice === "No") {
     mapElement.style.display = "none";
     return; // Don't initialize map
   }

@@ -30,6 +30,11 @@ main {
 
 .green-text {
   color: var(--light-green);
+  font-size: 0.875rem;
+}
+
+.green-text2 {
+  color: var(--light-green);
 }
 
 .green-text:hover {
@@ -87,27 +92,38 @@ h6 {
   width: 80ch;
 }
 
+/* #wave {
+  filter: drop-shadow(0rem -0.75rem 1.56rem rgba(183, 155, 123, 0.09));
+  overflow: hidden;
+  margin-top: clamp(-28rem, -55vh, -30rem);
+  position: absolute;
+  z-index: -1;
+} */
+
 #wave {
   filter: drop-shadow(0rem -0.75rem 1.56rem rgba(183, 155, 123, 0.09));
   overflow: hidden;
-  margin-top: -29rem;
+  margin-top: clamp(-28rem, -55vh, -30rem);
   position: absolute;
   z-index: -1;
+
+  /* Lägg till mask */
+  -webkit-mask-image: linear-gradient(to bottom, black 92%, transparent 40%);
+  mask-image: linear-gradient(to bottom, black 92%, transparent 40%);
 }
 
-#wave,
-#loadingPage {
-  margin-top: -20rem;
+#short-page #wave {
+  margin-top: clamp(-29rem, -39vh, -21rem);
 }
 
-.flex-wrap {
+/* .flex-wrap {
   display: flex;
   flex-direction: column;
 }
 
 .page-wrapper {
   flex: 1;
-}
+} */
 
 .icon:hover {
   fill: var(--black);
@@ -577,6 +593,11 @@ h2 a:visited {
 /* --------------- LINKS ----------------- */
 a {
   text-decoration: none;
+}
+
+.link-list {
+  flex-direction: column;
+  display: inline-flex;
 }
 
 /* --------------- MAP ----------------- */
