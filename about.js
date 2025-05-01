@@ -56,3 +56,27 @@ document.addEventListener("DOMContentLoaded", function () {
     calcOutput.innerHTML = `<div class="center-container"><p class="poppins-bold center-text">With ${formatted_visits} customers</p><p class="poppins-black large">${formatted_km} km</p><p class=" poppins-bold center-text">of travel could be saved.</p></div><div class="center-container"><p class="poppins-bold center-text-small">That equals to</p><p class="poppins-black medium">${formatted_CO2} kg</p><p class="poppins-bold center-text-small">of CO2 emissions.</p></div>`;
   });
 });
+
+// Get the button:
+const topBtn = document.getElementById("btn-top");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    topBtn.classList.add("show");
+  } else {
+    topBtn.classList.remove("show");
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
