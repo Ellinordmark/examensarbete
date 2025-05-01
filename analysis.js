@@ -503,8 +503,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
       localStorage.setItem("choicesLocal", JSON.stringify(userChoices));
     });
-
-    // window.location.href = "verify.html";
   }
 
   // EVALUATE PAGE: showing the results
@@ -520,12 +518,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
           p.textContent = `${key.replace("btn-choice", "")}: ${value}`;
           p.classList.add("poppins-regular");
           output.appendChild(p);
-        }
-        // if (key == "Nation") {
-        //   p.textContent = `${key.replace("btn-choice", "")}: Sweden`;
-        //   p.classList.add("poppins-regular");
-        //   output.appendChild(p);
-        else {
+        } else {
           p.textContent = `Number of ${key.replace("btn-choice", "")}: ${value}`;
           p.classList.add("poppins-regular");
           output.appendChild(p);

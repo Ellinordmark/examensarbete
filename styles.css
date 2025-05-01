@@ -92,14 +92,6 @@ h6 {
   width: 80ch;
 }
 
-/* #wave {
-  filter: drop-shadow(0rem -0.75rem 1.56rem rgba(183, 155, 123, 0.09));
-  overflow: hidden;
-  margin-top: clamp(-28rem, -55vh, -30rem);
-  position: absolute;
-  z-index: -1;
-} */
-
 #wave {
   filter: drop-shadow(0rem -0.75rem 1.56rem rgba(183, 155, 123, 0.09));
   overflow: hidden;
@@ -107,7 +99,7 @@ h6 {
   position: absolute;
   z-index: -1;
 
-  /* Lägg till mask */
+  /* Mask to hide dropshadow on the bottom */
   -webkit-mask-image: linear-gradient(to bottom, black 92%, transparent 40%);
   mask-image: linear-gradient(to bottom, black 92%, transparent 40%);
 }
@@ -115,15 +107,6 @@ h6 {
 #short-page #wave {
   margin-top: clamp(-29rem, -39vh, -21rem);
 }
-
-/* .flex-wrap {
-  display: flex;
-  flex-direction: column;
-}
-
-.page-wrapper {
-  flex: 1;
-} */
 
 .icon:hover {
   fill: var(--black);
@@ -134,7 +117,7 @@ h6 {
   color: var(--warning);
   font-size: 0.875rem;
   margin-top: 1.5rem;
-  min-height: 1.5em; /* ensures space is always reserved */
+  min-height: 1.5em;
   visibility: hidden;
 }
 
@@ -168,19 +151,12 @@ h6 {
   margin: 0.625rem;
   padding: 0.625rem 1.25rem;
   width: 6.25rem;
-  /* background-color: var(--light-green); */
-  /* border-radius: 0.5rem; */
-  /* color: var(--light-green); */
   border: none;
   margin-top: 1.5rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
   font-size: 1rem;
 }
-
-/* .modal-content button:hover {
-  background-color: var(--dark-green);
-} */
 
 .modal-content p {
   width: auto;
@@ -417,7 +393,6 @@ input[type="file"] {
 }
 
 #btn-top {
-  /* display: none; */
   position: fixed;
   bottom: 1.25rem;
   right: 1.875rem;
@@ -650,7 +625,6 @@ img.huechange {
   position: relative;
   top: 0.15em;
   transform: rotate(135deg);
-  /* transform-origin: 50% 60%; */
   transition: transform 0.3s ease;
   vertical-align: top;
   width: 0.45em;

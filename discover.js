@@ -120,7 +120,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       // Delay navigation slightly to ensure localStorage is written
       setTimeout(() => {
         window.location.href = "verify.html";
-      }, 50); // 50ms is usually enough
+      }, 50);
     });
   }
 });
