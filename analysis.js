@@ -499,7 +499,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         userChoices["Municipality"] = municipalInput.value.trim();
       }
 
-      console.log("Final saved choices:", userChoices);
+      // console.log("Final saved choices:", userChoices);
 
       localStorage.setItem("choicesLocal", JSON.stringify(userChoices));
     });
@@ -514,6 +514,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
       for (const [key, value] of Object.entries(storedchoicesLocal)) {
         const p = document.createElement("p");
+        console.log(localStorage);
         if (key == "Nation" || key == "Municipality" || key == "Region" || key == "Analysis mode") {
           p.textContent = `${key.replace("btn-choice", "")}: ${value}`;
           p.classList.add("poppins-regular");
