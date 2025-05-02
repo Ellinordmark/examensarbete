@@ -15,14 +15,6 @@ radioButtons.forEach((button) => {
   });
 });
 
-// Save if the user picked YES or NO
-document.getElementById("form3").addEventListener("submit", function (e) {
-  const selected = document.querySelector('input[name="btn-choices4"]:checked');
-  if (selected) {
-    localStorage.setItem("hasExistingFacilities", selected.value);
-  }
-});
-
 // -----------------------UPLOAD BUTTON ------------------------
 
 const fileUpload = document.getElementById("file-upload");
@@ -89,11 +81,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
   // FORM PAGE: when submitting
   if (form3) {
     form3.addEventListener("submit", function (event) {
+      console.log(userChoices);
       event.preventDefault();
 
       const facilityInput = document.getElementById("number-input1");
       const alertMessage = document.getElementById("alertMessage");
       const value = parseInt(facilityInput.value);
+
+      // save YES/NO radio value to localStorage
+      const selected = document.querySelector('input[name="btn-choices4"]:checked');
+      if (selected) {
+        localStorage.setItem("hasExistingFacilities", selected.value);
+      }
 
       if (document.querySelector('input[id="btn-choice8"]:checked') && fileUpload.files.length === 0) {
         alertMessage.textContent = "Please upload a CSV file.";
@@ -117,7 +116,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
       localStorage.setItem("choicesLocal", JSON.stringify(userChoices));
       console.log("Saved to localStorage:", JSON.stringify(userChoices));
-      // Delay navigation slightly to ensure localStorage is written
+
       setTimeout(() => {
         window.location.href = "verify.html";
       }, 50);

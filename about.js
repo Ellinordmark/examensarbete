@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const calculated_CO2 = calculated_km * 0.061;
     console.log("CO2:", calculated_CO2);
 
-    //Formatera
+    //Format
     const formatted_km = calculated_km
       .toLocaleString("en-US") // Format with commas
       .replace(/,/g, " "); // Replace commas with spaces
