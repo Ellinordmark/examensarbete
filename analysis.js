@@ -1,4 +1,9 @@
 // ---------------------------------- ANALYSE PAGE -------------------------------
+let userChoices = {};
+const savedChoices = localStorage.getItem("choicesLocal");
+if (savedChoices) {
+  userChoices = JSON.parse(savedChoices);
+}
 document.addEventListener("DOMContentLoaded", function () {
   const regions = [
     "Dalarna",
@@ -333,7 +338,20 @@ document.addEventListener("DOMContentLoaded", function () {
   // Listen to radio button changes
   radioButtons.forEach((radio) => {
     radio.addEventListener("change", function () {
+      // Dölj båda input-fälten
       Object.values(inputs).forEach((div) => (div.style.display = "none"));
+  
+      // Töm inputfält
+      document.getElementById("region").value = "";
+      document.getElementById("municipality").value = "";
+  
+      // Ta bort gamla val från både userChoices (i minnet) och localStorage
+      delete userChoices["Region"];
+      delete userChoices["Municipality"];
+      delete userChoices["Nation"];
+      localStorage.setItem("choicesLocal", JSON.stringify(userChoices));
+  
+      // Visa rätt inputfält
       if (inputs[this.value]) {
         inputs[this.value].style.display = "block";
       }
@@ -369,16 +387,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // Validation depending on selected btnChoice
     if (btnChoice.value === "Regional") {
       document.getElementById("municipality").value = "";
-      if (region === "" || !regions.includes(region)) {
+      if (
+        region === "" ||
+        !regions.map((r) => r.toLowerCase()).includes(region.toLowerCase())
+      ) {
         alertMessage.textContent = "Please enter a valid region.";
         alertMessage.classList.remove("hidden");
         return;
       }
     }
-
+    
     if (btnChoice.value === "Municipal") {
       document.getElementById("region").value = "";
-      if (municipality2 === "" || !municipality.includes(municipality2)) {
+      if (
+        municipality2 === "" ||
+        !municipality.map((m) => m.toLowerCase()).includes(municipality2.toLowerCase())
+      ) {
         alertMessage.textContent = "Please enter a valid municipality.";
         alertMessage.classList.remove("hidden");
         return;
@@ -463,7 +487,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const output = document.getElementById("output");
 
   // Store choices here
-  const userChoices = {};
+ {
+  
+}
 
   //   Attach click listeners to choice buttons
   const discoverEvaluateRadios = document.querySelectorAll("#form1 input[name='btn-choices2']");
@@ -515,12 +541,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
       for (const [key, value] of Object.entries(storedchoicesLocal)) {
         const p = document.createElement("p");
         console.log(localStorage);
+
+        const formattedValue = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+
         if (key == "Nation" || key == "Municipality" || key == "Region" || key == "Analysis mode") {
-          p.textContent = `${key.replace("btn-choice", "")}: ${value}`;
+          p.textContent = `${key.replace("btn-choice", "")}: ${formattedValue}`;
           p.classList.add("poppins-regular");
           output.appendChild(p);
         } else {
-          p.textContent = `Number of ${key.replace("btn-choice", "")}: ${value}`;
+          p.textContent = `Number of ${key.replace("btn-choice", "")}: ${formattedValue}`;
           p.classList.add("poppins-regular");
           output.appendChild(p);
         }
