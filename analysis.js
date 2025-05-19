@@ -373,7 +373,7 @@ document.addEventListener("DOMContentLoaded", function () {
     alertMessage.classList.add("hidden");
 
     if (!btnChoice) {
-      alertMessage.textContent = "Please select geographical area.";
+      alertMessage.textContent = "Please select a geographical area.";
       alertMessage.classList.remove("hidden");
       return;
     }
